@@ -1,15 +1,22 @@
 // App JS functions
 
-// Server side code
-var request = require('request');
-//request();
+function checkSpeed(){
+    console.log("Running checkSpeed");
+    var speedLimit = 80;
+    gm.info.getVehicleData(getSpeedSuccess, ['average_speed']);
 
-// Speeding
+    function getSpeedSuccess(data) {
+        console.log("Speed is " + data.average_speed);
+        if (data.average_speed > 80) {
+            speedingWarning(data.average_speed);
+        }
+    }
+}
 
 /* Speeding warning */
 function speedingWarning(speed) {
     var textMom = false;
-    console.log("Current speed: ");
+    console.log("Current speed: " + speed);
     console.log("You are going too fast! I'm scared.");
     var id = gm.voice.startTTS(success, "You are going too fast! I'm scared.");
     if (id == 1){
