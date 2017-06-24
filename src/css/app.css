@@ -1,29 +1,15 @@
 #welcome {
   text-align: center;
-  background-color: deepskyblue;
 }
 
-#close {
-  position: absolute;
-  top: 90px;
-  right: 0;
-  width: 64px;
-  height: 64px;
-  overflow: hidden;
-  z-index: 1000;
-}
-#close img {
-  width: 100%;
+#create {
+  text-align: center;
 }
 
 @media (min-width: 801px) {
   #close {
     top: 104px;
   }
-}
-
-.title {
-  text-align: center;
 }
 
 /* Style the tab buttons */
@@ -67,6 +53,5 @@ fieldset {
   padding-left: 0.75em;
   padding-right: 0.75em;
   border: 2px;
-  text-align: left;
 }
 
