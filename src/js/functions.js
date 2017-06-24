@@ -13,6 +13,12 @@ function checkSpeed(){
     }
 }
 
+
+// Server side code
+
+
+// Speeding
+
 /* Speeding warning */
 function speedingWarning(speed) {
     var textMom = false;
