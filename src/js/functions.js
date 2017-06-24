@@ -1,6 +1,5 @@
 // App JS functions
 
-<<<<<<< HEAD
 /* Set the width of the side navigation to 250px */
 function openNav() {
     document.getElementById("mySidenav").style.width = "200px";
@@ -11,9 +10,7 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
 
-=======
 // Server side code
->>>>>>> d555d1ef9da4c0f6ef555692c37a8d8c9ae75066
 
 // Speeding
 
