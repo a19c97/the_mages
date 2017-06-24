@@ -1,7 +1,5 @@
 // Main app JS code
 
-// speed
-
 var speedLimit = 80;
 gm.info.getVehicleData(getSpeedSuccess, ['average_speed']);
 
