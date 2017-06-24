@@ -21,6 +21,10 @@
   }
 }
 
+.title {
+  text-align: center;
+}
+
 /* Style the tab buttons */
 .tablink {
   background-color: #555;
@@ -64,3 +68,4 @@ fieldset {
   border: 2px groove (internal value);
   text-align: left;
 }
+
