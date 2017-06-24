@@ -7,15 +7,9 @@ function initializeUI() {
 }
 
 function changePageFocus(page) {
-    if (page === 'welcome') {
-        document.getElementById('tabs').style.display = "inline";
-        document.getElementById('welcome').style.display = "none";
-        currentPage = 'tabs';
-    } else if (currentPage === 'tabs') {
-        document.getElementById('tabs').style.display = "none";
-        document.getElementById('welcome').style.display = "inline";
-        currentPage = 'welcome';
-    }
+    document.getElementById(currentPage).style.display = "none";
+    document.getElementById(page).style.display = "inline";
+    currentPage = page;
 }
 
 function openTab(cityName, elmnt, color) {
