@@ -1,9 +1,10 @@
 // Main app JS code
 
-var PAGES = ['welcome', 'settings'];
+var DIVS = ['welcome', 'admin', 'guest'];
 
+// Initial page settings
 var currentPage = 'welcome';
-setPageFocus('welcome');
+initializeUI();
 
 checkSpeed();
 
