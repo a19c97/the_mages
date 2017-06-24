@@ -78,3 +78,7 @@ function playAudio() {
     }
 }
 
+function setVolume(volume) {
+    var music = document.getElementById('audio_player');
+    music.volume = volume;
+}
