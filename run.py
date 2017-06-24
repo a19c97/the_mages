@@ -17,16 +17,14 @@ def hello_monkey():
 	global lon
 	global client
 	resp = MessagingResponse()
-	print resp.__dict__
 	if request.values.get('From', None) == None:
 		lat = request.values.get('lat', 0)
 		lon = request.values.get('lon', 0)
-	elif (request.values.get('From', None) != "+16475153544" or
+	elif (request.values.get('From', None) != "GM Car" or
 		request.values.get('speed', None) == None):
 		resp.message("Your car is located here:" +
 			" https://www.google.ca/maps/@" +
 			str(lat) + "," + str(lon) + ",15z")
-		print resp.__dict__
 	else:
 		client.messages.create(to = "+16475153544",
 			from_= "+16473609652",
