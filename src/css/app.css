@@ -64,7 +64,7 @@
 .page {
   height: 100%;
   top: 0;
-  padding-top: 120px; /* Place content 120px from the top */
+  padding-top: 0px; /* Place content 120px from the top */
   overflow-x: hidden; /* Disable horizontal scroll */
 }
 
