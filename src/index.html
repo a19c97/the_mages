@@ -27,20 +27,10 @@
     <body>
         <div id="welcome">
             <h1>Welcome</h1>
-            <button onclick="setPageFocus('admin')">Go to admin</button>
-            <button onclick="setPageFocus('guest')">Go to guest</button>
+            <button onclick="swapPageFocus()">Swap</button>
         </div>
 
-
-        <div id="admin">
-            <h1 class="title">Admin</h1>
-        </div>
-
-        <div id="guest">
-            <h1 class="title">Guest</h1>
-        </div>
-
-        <div id="tab">
+        <div id="tabs">
             <div id="Music" class="tabcontent">
                 <h3>Music</h3>
                 <p>Music is the capital city of England.</p>
@@ -75,6 +65,8 @@
             <button class="tablink" onclick="openTab('Map', this, 'green')">Map</button>
             <button class="tablink" onclick="openTab('Tokyo', this, 'blue')">Tokyo</button>
             <button class="tablink" onclick="openTab('Settings', this, 'mediumpurple')">Settings</button>
+            <br />
+            <button onclick="swapPageFocus()">Swap</button>
         </div>
 
         <!-- App code: -->

@@ -1,18 +1,21 @@
 // App JS functions
 
-/* Set the width of the side navigation to 250px */
-function openNav() {
-    document.getElementById("mySidenav").style.width = "200px";
-}
-
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-
 // Server side code
 
 // Speeding
+
+function checkSpeed(){
+    console.log("Running checkSpeed");
+    var speedLimit = 80;
+    gm.info.getVehicleData(getSpeedSuccess, ['average_speed']);
+
+    function getSpeedSuccess(data) {
+        console.log("Speed is " + data.average_speed);
+        if (data.average_speed > 80) {
+            speedingWarning(data.average_speed);
+        }
+    }
+}
 
 /* Speeding warning */
 function speedingWarning(speed) {

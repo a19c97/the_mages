@@ -1,23 +1,20 @@
 /* JS navigation code */
 
 function initializeUI() {
-    for (var i = 0; i < DIVS.length; i++) {
-        if (DIVS[i] !== 'welcome') {
-            document.getElementById(DIVS[i]).style.display = "none";
-        } else {
-            document.getElementById(DIVS[i]).style.display = "inline";
-        }
-    }
+    document.getElementById('tabs').style.display = "none";
+    document.getElementbyId('create').style.display = "none";
+    document.getElementById('welcome').style.display = "inline";
 }
 
-function setPageFocus(page) {
-    document.getElementById(currentPage).style.display = "none";
-    if (page !== 'welcome') {
-        document.getElementById(page).style.display = "inline";
-        //document.getElementById('tabs').style.display = "inline";
-    } else {
+function changePageFocus(page) {
+    if (page === 'welcome') {
+        document.getElementById('tabs').style.display = "inline";
+        document.getElementById('welcome').style.display = "none";
+        currentPage = 'tabs';
+    } else if (currentPage === 'tabs') {
+        document.getElementById('tabs').style.display = "none";
         document.getElementById('welcome').style.display = "inline";
-        //document.getElementById('tabs').style.display = "none";
+        currentPage = 'welcome';
     }
 }
 
