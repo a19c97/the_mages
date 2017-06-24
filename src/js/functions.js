@@ -1,8 +1,19 @@
 // App JS functions
 
-// Server side code
+// User functions
 
-// Speeding
+function createUser(name) {
+    users.push({
+        name: name,
+        music: true,
+        map: true,
+        learner: true,
+        accessibility: true,
+        volume: 0.5
+    });
+}
+
+// Speed functions
 
 function checkSpeed(){
     console.log("Running checkSpeed");
@@ -53,21 +64,6 @@ function sendLocation() {
 
 }
 
-/* Set the destination of the car to home */
-function setDestination() {
-	console.log("Set destination to home");
-	// var dest
-	//gm.nav.setDestination(goHomeSuccess, goHomeFailure, dest, true);
-}
-
-function goHomeSuccess(list) {
-  console.log("Destination has been set");
-}
-
-function goHomeFailure(err) {
-  console.log("Having trouble setting destination");
-}
-
 function playAudio() {
     var music = document.getElementById('audio_player');
 
@@ -81,3 +77,4 @@ function playAudio() {
         pButton.className = "play";
     }
 }
+
