@@ -10,3 +10,8 @@ function closeNav() {
 
     document.getElementById("mySidenav").style.width = "0";
 }
+
+/* Set the destination of the car to home */
+function goHome() {
+	
+}
