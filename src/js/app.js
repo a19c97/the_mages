@@ -1,8 +1,13 @@
 // Main app JS code
 
 // speed
-var speed = gm.system.getSpeed();
+
 var speedLimit = 80;
-if (speed > speedLimit) {
-    speedingWarning(speed);
+gm.info.getVehicleData(getSpeedSuccess, ['average_speed']);
+
+function getSpeedSuccess(data) {
+    console.log("Speed is " + data.average_speed);
+    if (data.average_speed > speedLimit) {
+        speedingWarning(data.average_speed);
+    }
 }

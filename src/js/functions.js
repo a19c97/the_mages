@@ -11,15 +11,14 @@ function closeNav() {
 }
 
 // Server side code
-var request = require('request');
-//request();
+
 
 // Speeding
 
 /* Speeding warning */
 function speedingWarning(speed) {
     var textMom = false;
-    console.log("Current speed: ");
+    console.log("Current speed: " + speed);
     console.log("You are going too fast! I'm scared.");
     var id = gm.voice.startTTS(success, "You are going too fast! I'm scared.");
     if (id == 1){
