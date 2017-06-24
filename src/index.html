@@ -37,6 +37,43 @@
 
         </div>
 
+        <div id="tab">
+            <div id="Music" class="tabcontent">
+                <h3>Music</h3>
+                <p>Music is the capital city of England.</p>
+            </div>
+
+            <div id="Map" class="tabcontent">
+                <h3>Map</h3>
+                <p>Map is the capital of France.</p>
+            </div>
+
+            <div id="Tokyo" class="tabcontent">
+                <h3>Tokyo</h3>
+                <p>Tokyo is the capital of Japan.</p>
+            </div>
+
+            <div id="Settings" class="tabcontent">
+                <h3>Settings</h3>
+                <form>
+                    <fieldset>
+                        <legend>Please select features</legend>
+                        <input type="checkbox" name="feature" value="Music" /> Music <br />
+                        <input type="checkbox" name="feature" value="Map" /> Map <br />
+                        <input type="checkbox" name="feature" value="Learner" />  Learner <br />
+                        <input type="checkbox" name="feature" value="Enhanced Accessibility" />  Enhanced Accessibility <br />
+                        Volume <br /><input type="range" min="0" max="50" value="25" step="5"><br />
+                        <input type="button" value="Save" />
+                    </fieldset>
+                </form>
+            </div>
+
+            <button class="tablink" onclick="openTab('Music', this, 'red')" id="defaultOpen">Music</button>
+            <button class="tablink" onclick="openTab('Map', this, 'green')">Map</button>
+            <button class="tablink" onclick="openTab('Tokyo', this, 'blue')">Tokyo</button>
+            <button class="tablink" onclick="openTab('Settings', this, 'mediumpurple')">Settings</button>
+        </div>
+
         <!-- App code: -->
         <script src="js/nav.js"></script>
         <script src="js/functions.js"></script>
