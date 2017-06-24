@@ -27,8 +27,20 @@
     <body>
         <div id="welcome">
             <h1>Welcome</h1>
+            <img src="images/adduser.png" alt="Add user" />
             <button onclick="changePageFocus('tabs')">Swap</button>
         </div>
+
+        <div id="create">
+            <h1>Create a user</h1>
+            <form>
+                <fieldset>
+                    Name <input type="text" name="detail" placeholder="Name" /><br /><br />
+                    <input type="button" value="Save" />
+                </fieldset>
+            </form>
+        </div>
+
 
         <div id="tabs">
             <div id="GoHome" class="tabcontent">
