@@ -2,7 +2,7 @@
 
 function initializeUI() {
     document.getElementById('tabs').style.display = "none";
-    document.getElementbyId('create').style.display = "none";
+    document.getElementById('create').style.display = "none";
     document.getElementById('welcome').style.display = "inline";
 }
 
