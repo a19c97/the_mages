@@ -12,7 +12,7 @@ function changePageFocus(page) {
     currentPage = page;
 }
 
-function openTab(cityName, elmnt, color) {
+function openTab(tabName, elmnt, color) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -27,7 +27,7 @@ function openTab(cityName, elmnt, color) {
     }
 
     // Show the specific tab content
-    document.getElementById(cityName).style.display = "block";
+    document.getElementById(tabName).style.display = "block";
 
     // Add the specific color to the button used to open the tab content
     elmnt.style.backgroundColor = color;
