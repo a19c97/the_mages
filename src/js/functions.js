@@ -67,3 +67,17 @@ function goHomeSuccess(list) {
 function goHomeFailure(err) {
   console.log("Having trouble setting destination");
 }
+
+function playAudio() {
+    var music = document.getElementById('audio_player');
+
+    if (music.paused) {
+        music.play();
+        pButton.className = "";
+        pButton.className = "pause";
+    } else {
+        music.pause();
+        pButton.className = "";
+        pButton.className = "play";
+    }
+}
