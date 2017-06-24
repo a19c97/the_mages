@@ -12,18 +12,23 @@ function closeNav() {
 
 
 // Server side code
-var http = require('http');
+var request = require('request');
+//request();
 
 // Speeding
 
 /* Speeding warning */
-function speedingWarning() {
-
+function speedingWarning(speed) {
+    var textMom = false;
+    console.log("Current speed: ");
+    console.log("You are going too fast! I'm scared.");
+    textMom = true;
+    sendSpeedingText(speed);
 }
 
 /* Send speeding data to mom */
-function sendSpeedingText() {
-
+function sendSpeedingText(speed) {
+    
 }
 
 // Location data
