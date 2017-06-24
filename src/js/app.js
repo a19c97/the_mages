@@ -1,8 +1,6 @@
 // Main app JS code
-while (true){
-    checkSpeed();
-    console.log("hello");
-}
+checkSpeed();
+
 
 function checkSpeed(){
     console.log("Running checkSpeed");
