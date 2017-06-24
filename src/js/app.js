@@ -1,6 +1,11 @@
 // Main app JS code
-checkSpeed();
 
+var PAGES = ['welcome', 'settings'];
+
+var currentPage = 'welcome';
+setPageFocus('welcome');
+
+checkSpeed();
 
 function checkSpeed(){
     console.log("Running checkSpeed");
