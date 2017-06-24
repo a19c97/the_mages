@@ -10,28 +10,67 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
 
-// Server side code
 
 // Speeding
+var strike = 0;
+var speedingLock = false;
+var textingLock = false;
+var ttsId = 0;
 
 /* Speeding warning */
 function speedingWarning(speed) {
-    var textMom = false;
+    // delay
+    if (speedingLock) return;
+    speedingLock = true;
+    setTimeout(function() {
+        speedingLock = false;
+    }, 3000);
+
     console.log("Current speed: " + speed);
-    console.log("You are going too fast! I'm scared.");
-    /*
-    var id = gm.voice.startTTS(success, "You are going too fast! I'm scared.");
-    if (id == 1){
-        // error; raise it somehow
+    switch (strike) {
+        case 0:
+            say("You are going too fast.");
+            break;
+        case 1:
+            say("You are going too fast! Slow down!");
+            break;
+        case 2:
+            say("You are going too fast!!! I'm scared!!!");
+            break;
+        case 3:
+            say("Slow down or I'll text mom.");
+            break;
+        case 4:
+            say("I'm not kidding.");
+            break;
+        case 5:
+            say("That's it - I'm texting mom.");
+            if (textingLock) return;
+            textingLock = true;
+            setTimeout(function() {
+                textingLock = false;
+            }, 6000);
+            //sendSpeedingText(speed);
+            console.log("Texting mom");
+            strike = 0;
+            break;
     }
+
+    strike = strike + 1;
+}
+
+/* Helper function for tts */
+function say(text) {
+    if (ttsId != 0){
+        gm.voice.stopTTS(ttsId);
+    }
+    ttsId = gm.voice.startTTS(success, text);
+
     function success() {
         // let it roll
     }
-    gm.voice.stopTTS(id); */
-
-    textMom = true;
-    sendSpeedingText(speed);
 }
+
 
 /* Send speeding data to mom */
 function sendSpeedingText(speed) {
