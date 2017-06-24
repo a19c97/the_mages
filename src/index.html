@@ -38,6 +38,11 @@
         </div>
 
         <div id="tab">
+            <div id="GoHome" class="tabcontent">
+                <h3>GoHome</h3>
+                <img src="images/home.png" alt="Home" onclick="goHome()"/>
+            </div>
+
             <div id="Music" class="tabcontent">
                 <h3>Music</h3>
                 <p>Music is the capital city of England.</p>
@@ -46,11 +51,6 @@
             <div id="Map" class="tabcontent">
                 <h3>Map</h3>
                 <p>Map is the capital of France.</p>
-            </div>
-
-            <div id="Tokyo" class="tabcontent">
-                <h3>Tokyo</h3>
-                <p>Tokyo is the capital of Japan.</p>
             </div>
 
             <div id="Settings" class="tabcontent">
@@ -68,9 +68,9 @@
                 </form>
             </div>
 
+            <button class="tablink" onclick="openTab('GoHome', this, 'blue')">Go Home</button>
             <button class="tablink" onclick="openTab('Music', this, 'red')" id="defaultOpen">Music</button>
             <button class="tablink" onclick="openTab('Map', this, 'green')">Map</button>
-            <button class="tablink" onclick="openTab('Tokyo', this, 'blue')">Tokyo</button>
             <button class="tablink" onclick="openTab('Settings', this, 'mediumpurple')">Settings</button>
         </div>
 
@@ -78,5 +78,6 @@
         <script src="js/nav.js"></script>
         <script src="js/functions.js"></script>
         <script src="js/app.js"></script>
+        <script src="js/home.js"></script>
     </body>
 </html>
