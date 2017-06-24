@@ -1,5 +1,15 @@
 // App JS functions
 
+/* Set the width of the side navigation to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "200px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
 // Server side code
 
 // Speeding
@@ -9,6 +19,7 @@ function speedingWarning(speed) {
     var textMom = false;
     console.log("Current speed: " + speed);
     console.log("You are going too fast! I'm scared.");
+    /*
     var id = gm.voice.startTTS(success, "You are going too fast! I'm scared.");
     if (id == 1){
         // error; raise it somehow
@@ -16,7 +27,7 @@ function speedingWarning(speed) {
     function success() {
         // let it roll
     }
-    gm.voice.stopTTS(id);
+    gm.voice.stopTTS(id); */
 
     textMom = true;
     sendSpeedingText(speed);
@@ -24,7 +35,13 @@ function speedingWarning(speed) {
 
 /* Send speeding data to mom */
 function sendSpeedingText(speed) {
+    console.log("Sending speeding text");
+    var username = "Andrey";
 
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "https://32891a36.ngrok.io", true);
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhttp.send("speed=" + speed + "&" + "user=" + username + "&" + "From=" + "GM Car");
 }
 
 // Location data
