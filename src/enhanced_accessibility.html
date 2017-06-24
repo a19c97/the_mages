@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<!-- Base css, but you'll likely want to keep them -->
+        <link rel="stylesheet" href="css/reset.css" type="text/css">
+
+        <!-- Your custom files -->
+        <link rel="stylesheet" href="css/app.css" type="text/css">
+	</head>
+
+	<body>
+	
+		<div id="wrapper" class="page">
+			<div id="mySidenav" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+              <a href="admin.html">Admin</a>
+              <a href="guest.html">Guest</a>
+              <a href="teen.html">Teen</a>
+              <a href="learner.html">Learner</a>
+              <a href="enhanced_accessibility.html">Enhanced Accessibility</a>
+          	</div>
+			<button onclick="openNav()">Menu</button>
+
+			<img src="images/home.png" alt="Home" onclick="setDestination()"/>
+		</div>
+
+		<!-- App code: -->
+        <script src="js/app.js"></script>
+        <script src="js/functions.js"></script>
+	</body>
+</html>
