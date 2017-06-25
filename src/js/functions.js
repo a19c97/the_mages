@@ -7,11 +7,13 @@ function createUser() {
     var name = form.elements["name"].value;
     users.push({
         name: name,
-        music: true,
-        map: true,
+        home: "",
+        accessiblity: true,
         learner: true,
-        accessibility: true,
-        volume: 0.5
+        locationMonitoring: true,
+        preferences: {},
+        speedWarning: true,
+        speedLimit: 100
     });
 
     var newIcon = document.createElement('img');
