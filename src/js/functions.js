@@ -61,9 +61,25 @@ function createUser() {
 
 // Settings
 
-function changeSettings() {
-    var form = document.getElementById('settingsForm');
-    console.log(form.elements);
+/**
+ * Loads settings of currently selected user.
+ */
+function loadSettings() {
+    var currentUser = users[currentUserIndex];
+    console.log(currentUser);
+
+    // UI updates
+
+    var settingsForm = document.getElementById('settingsForm');
+    settingsForm.elements['accessibility'].checked = currentUser.accessibility;
+    settingsForm.elements['learner'].checked = currentUser.learner;
+    settingsForm.elements['locationMonitoring'].checked = currentUser.locationMonitoring;
+    settingsForm.elements['speedWarning'].checked = currentUser.speedWarning;
+
+    // Update info text
+    document.getElementById('userInfo').innerHTML = currentUser.name + ' - ' + currentUser.phone + ' - ' + currentUser.address;
+
+    // TODO: update actual settings
 }
 
 // Speeding

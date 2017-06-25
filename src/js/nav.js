@@ -18,6 +18,8 @@ function changePageFocus(page, name) {
             if (users[i].name === name) {
                 currentUserIndex = i;
                 console.log(users[i]);
+                // Reflect selected user settings in UI
+                loadSettings();
             }
         }
     }
