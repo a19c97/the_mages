@@ -57,6 +57,7 @@ function runSettings() {
 }
 
 function openTab(tabName, elmnt, color) {
+
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");

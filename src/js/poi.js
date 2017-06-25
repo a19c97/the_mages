@@ -8,6 +8,6 @@ function getPOI(type, tabName, elmnt, color) {
 		lon = position.coords.longitude;
 	}
 
-	openTab(tabName, elmnt, color);
+    openTab(tabName, elmnt, color);
 	return init(type, lat, lon);
 }
