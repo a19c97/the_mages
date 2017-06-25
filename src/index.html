@@ -41,43 +41,33 @@
 				type: [type]
 			}, callback);
 
-            var newDiv = document.createElement('div');
-
             for (i=0; i<result.length; i++) {
+                var newDiv = document.createElement('div');
+
+                var newIcon = document.createElement('img');
+
+				if (type == 'Food') {
+				 newIcon.src = "images/takeoutsmall.png";
+				 } else if (type == 'ATM') {
+				 newIcon.src = "images/atmsmall.png";
+				 } else if (type == 'Repair') {
+				 newIcon.src = "images/repairsmall.png";
+				 } else if (type == 'Gas station') {
+				 newIcon.src = "images/speedometersmaller.png";
+				 }
+
+				 newIcon.onclick = selectIcon();
+
+                newDiv.appendChild(newIcon);
+                newDiv.classList.add("block");
+
                 var newTitle = document.createElement('p');
                 newTitle.innerHTML = result[i][0];
                 newDiv.appendChild(newTitle);
-            }
 
-            var parent = document.getElementById('Results');
-            parent.appendChild(newDiv);
-
-			/*for (int i=0; i<result.length; i++) {
-
-				 var newDiv = document.createElement('div');
-
-				 var newIcon = document.createElement('img');*/
-				 /*if (type == 'Food') {
-				 	newIcon.src = "images/takeoutsmall.png";
-				 } else if (type == 'ATM') {
-				 	newIcon.src = "images/atmsmall.png";
-				 } else if (type == 'Repair') {
-				 	newIcon.src = "images/repairsmall.png";
-				 } else if (type == 'Gas station') {
-				 	newIcon.src = "images/speedometersmaller.png";
-				 }*/
-
-                /*newIcon.src = "https://goo.gl/images/LUvsKh";
-
-				 var newTitle = document.createElement('p');
-				 newTitle.innerHTML = result[i][0];
-
-				 newDiv.appendChild(newIcon);
-				 newDiv.appendChild(newTitle);
                 var parent = document.getElementById('Results');
                 parent.appendChild(newDiv);
-
-			 }*/
+            }
 
 			return result;
 		}
@@ -146,7 +136,7 @@
 
 			<div id="FavSub" class="tabcontent">
 				<h3>Results</h3>
-				<div id="Results"></div>
+				<div id="Results" style="display: inline-block"></div>
 			</div>
 
 			<div id="Map" class="tabcontent">

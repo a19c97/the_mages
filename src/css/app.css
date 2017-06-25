@@ -74,3 +74,12 @@ fieldset {
 .map {
     margin-top: 0px;
 }
+
+.block {
+    display: inline-block;
+    width: 100px;
+    margin-top: 0px;
+    padding-left: 7px;
+    padding-right: 7px;
+    vertical-align: top;
+}
