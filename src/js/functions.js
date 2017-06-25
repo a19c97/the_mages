@@ -145,6 +145,7 @@ function checkSpeed(){
 }
 
 function checkLocation(){
+
     var id = gm.info.watchPosition(processPosition, true);
     var thres = 10;
 
@@ -161,13 +162,42 @@ function checkLocation(){
             sendLocation(lon, lat);
         }
     }
-
 }
 
 // Learner stuff
+
 /* Blinker */
+var prev_yaw_rate = 0;
+var yaw_rate = 0;
+
 function blinkerReminder() {
 
+    var turn_signal_left = 0x00;
+    var turn_signal_right = 0x00;
+
+    gm.info.watchVehicleData(getYawSuccessful, ['yaw_rate']);
+
+    function getYawSuccessful(data) {
+        yaw_rate = data.yaw_rate;
+        if (Math.abs(yaw_rate - prev_yaw_rate) > 15){
+            console.log("You're turning a lot!");
+            prev_yaw_rate = yaw_rate;
+            checkBlinkers();
+        }
+    }
+
+    function checkBlinkers() {
+        gm.info.getVehicleData(getBlinkerSuccessful,
+            ['turn_signal_right', 'turn_signal_left']);
+
+        function getBlinkerSuccessful(data) {
+            if (yaw_rate < 0 && data.turn_signal_left == 0x00) {
+                say("Remember to signal left!");
+            } else if (yaw_rate > 0 && data.turn_signal_right == 0x00) {
+                say("Remember to signal right!");
+            }
+        }
+    }
 }
 
 /* Seat belt */
@@ -206,19 +236,19 @@ var prev_gear = "F";
 
 /* Doors */
 function doorWarning() {
-    gm.info.getVehicleData(getGearSuccessful, ['gear_automatic']);
-    var currGear;
-
-    function getGearSuccessful(data) {
-        console.log('Gear is: ', data.gear_automatic);
-        currGear = data.gear_automatic;
-    }
-
-
-    // if in neutral or park and changed to forward or reverse, give warning
-    var neutralOrPark = (prev_gear == "D" || prev_gear == "N");
-    var toForwardOrReverse = (currGear == "E" || currGear == "C");
-    if (neutralOrPark && toForwardOrReverse){
-
-    }
+    // gm.info.getVehicleData(getGearSuccessful, ['gear_automatic']);
+    // var currGear;
+    //
+    // function getGearSuccessful(data) {
+    //     console.log('Gear is: ', data.gear_automatic);
+    //     currGear = data.gear_automatic;
+    // }
+    //
+    //
+    // // if in neutral or park and changed to forward or reverse, give warning
+    // var neutralOrPark = (prev_gear == "D" || prev_gear == "N");
+    // var toForwardOrReverse = (currGear == "E" || currGear == "C");
+    // if (neutralOrPark && toForwardOrReverse){
+    //
+    // }
 }
