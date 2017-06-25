@@ -6,10 +6,13 @@ function initializeUI() {
     document.getElementById('welcome').style.display = "inline";
 }
 
-function changePageFocus(page) {
+function changePageFocus(page, name) {
     document.getElementById(currentPage).style.display = "none";
     document.getElementById(page).style.display = "inline";
     currentPage = page;
+    if (name) {
+        console.log(name);
+    }
 }
 
 function openTab(tabName, elmnt, color) {
