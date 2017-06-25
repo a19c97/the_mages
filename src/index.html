@@ -27,12 +27,12 @@
 		var result;
 		function init(type = 'Food', lat = 42.32877027777778, lon = -83.03956861111111) {
 			var loc = {lat: lat, lng: lon};
-			
+
 			map = new google.maps.Map(document.getElementById('map'), {
 				center: loc,
 				zoom: 15
 			});
-			
+
 			infowindow = new google.maps.InfoWindow();
 			var service = new google.maps.places.PlacesService(map);
 			service.nearbySearch({
@@ -71,7 +71,7 @@
 
 			return result;
 		}
-		
+
 		function callback(results, status) {
 			if (status === google.maps.places.PlacesServiceStatus.OK) {
 				result = new Array(Math.min(results.length, 6));
@@ -89,13 +89,13 @@
 	</head>
 	<body>
 		<div id="welcome" class="welcome">
-			<h1>Welcome</h1>
-			<p>Select or create a user below:</p>
+			<h1 class="welcomeHeader">Welcome</h1>
+			<p class="welcomeInstructions">Select or create a user below:</p>
 
-			<div id="users">
+			<div id="users" class="users">
 			</div>
 
-			<div>
+			<div class="addUser">
 				<img src="images/adduser.png"
 					 alt="Add user"
 					 onclick="changePageFocus('create', null)"/>
@@ -150,8 +150,8 @@
                     <fieldset id="settingsForm">
                         <p id="userInfo"></p>
 						<legend>Please select features</legend>
-						<input type="checkbox" name="speedWarning" onclick="speedCheck()"/> Speed tracking <br/>
-						<input type="checkbox" name="locationMonitoring" onclick="locationCheck()"/> Location tracking <br/>
+						<input type="checkbox" name="speedWarning" onclick="speedCheck()"/> Speed warning <br/>
+						<input type="checkbox" name="locationMonitoring" onclick="locationCheck()"/> Location monitoring <br/>
 						<input type="checkbox" name="learner" onclick="learnerCheck()"/> Learner mode<br/>
 						<input type="checkbox" name="accessibility" onclick="accessCheck()"/> Enhanced accessibility <br/>
 						<br/><br/>

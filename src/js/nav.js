@@ -36,15 +36,22 @@ function runSettings() {
     if (users[currentUserIndex].locationMonitoring){
         console.log("Monitoring location");
         checkLocation();
+    } else {
+        stopLocation();
     }
+
     if (users[currentUserIndex].speedWarning){
         console.log("Speed warning on");
         checkSpeed();
+    } else {
+        stopSpeed();
     }
 
     if (users[currentUserIndex].accessibility){
         console.log("accessiblity on");
-        // do accessiblity stuff
+        bigFont();
+    } else {
+        smallFont();
     }
 
     if (users[currentUserIndex].learner){
@@ -52,6 +59,10 @@ function runSettings() {
         doorWarning();
         blinkerReminder();
         seatBeltWarning();
+    } else {
+        stopSeatbelt();
+        stopBlinker();
+        stopDoor();
     }
 
 }
