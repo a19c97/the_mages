@@ -17,6 +17,8 @@ function checkSpeed(){
     function getSpeedSuccess(data) {
         if (data.average_speed > speedLimit) {
             speedingWarning(data.average_speed);
+        } else {
+            resetWarning(data.average_speed);
         }
     }
 }

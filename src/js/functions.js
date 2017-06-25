@@ -26,16 +26,18 @@ function speedingWarning(speed) {
         speedingLock = false;
     }, 3000);
 
-    console.log("Current speed: " + speed);
+    strike += 1;
+    console.log("Current speed: " + speed + " Strike: " + strike);
+
     switch (strike) {
-        case 0:
-            say("You are going too fast.");
-            break;
+        // case 0:
+        //     say("You are going too fast.");
+        //     break;
         case 1:
-            say("You are going too fast! Slow down!");
+            say("You are going too fast!");
             break;
         case 2:
-            say("You are going too fast!!! I'm scared!!!");
+            say("I'm scared!!!");
             break;
         case 3:
             say("Slow down or I'll text mom.");
@@ -55,20 +57,20 @@ function speedingWarning(speed) {
             strike = 0;
             break;
     }
+}
 
-    strike = strike + 1;
+function resetWarning(speed) {
+    if (strike != 0) {
+        strike = 0;
+        say("That's much better.");
+    }
 }
 
 /* Helper function for tts */
 function say(text) {
-    if (ttsId != 0){
-        gm.voice.stopTTS(ttsId);
-    }
-    ttsId = gm.voice.startTTS(success, text);
-
-    function success() {
-        // let it roll
-    }
+    // gm.voice.stopTTS(ttsId);
+    ttsId = gm.voice.startTTS(function() {}, text);
+    console.log("TTS: " + ttsId + " " + typeof ttsId);
 }
 
 
