@@ -178,10 +178,12 @@ function myMap() {
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }
 
+var speedId = 0;
+
 function checkSpeed(){
     console.log("Running checkSpeed");
     var speedLimit = 80;
-    var id = gm.info.watchVehicleData(getSpeedSuccess, ['average_speed']);
+    speedId = gm.info.watchVehicleData(getSpeedSuccess, ['average_speed']);
 
     function getSpeedSuccess(data) {
         if (data.average_speed > (speedLimit + 20)) {
@@ -192,9 +194,18 @@ function checkSpeed(){
     }
 }
 
+function stopSpeed() {
+    if (speedId != 0){
+        gm.info.clearVehicleData(speedId);
+        speedId = 0;
+    }
+}
+
+var locationId = 0;
+
 function checkLocation(){
 
-    var id = gm.info.watchPosition(processPosition, true);
+    locationId = gm.info.watchPosition(processPosition, true);
     var thres = 10;
 
     function processPosition(position){
@@ -212,18 +223,26 @@ function checkLocation(){
     }
 }
 
+function stopLocation() {
+    if (locationId != 0){
+        gm.info.clearVehicleData(locationId);
+        locationId = 0;
+    }
+}
+
 // Learner stuff
 
 /* Blinker */
 var prev_yaw_rate = 0;
 var yaw_rate = 0;
+var yawId = 0;
 
 function blinkerReminder() {
 
     var turn_signal_left = 0x00;
     var turn_signal_right = 0x00;
 
-    gm.info.watchVehicleData(getYawSuccessful, ['yaw_rate']);
+    yawId = gm.info.watchVehicleData(getYawSuccessful, ['yaw_rate']);
 
     function getYawSuccessful(data) {
         yaw_rate = data.yaw_rate;
@@ -248,15 +267,26 @@ function blinkerReminder() {
     }
 }
 
+function stopBlinker() {
+    if (yawId != 0){
+        gm.info.clearVehicleData(yawId);
+        yaw_rate = 0;
+        yawId = 0;
+    }
+}
+
 /* Seat belt */
+var seatbeltId = 0;
+var passengerId = 0;
+
 function seatBeltWarning() {
     var passenger_present = 0;
     var passenger_seatbelt_fastened = 0;
 
-    gm.info.watchVehicleData(getSeatbeltSuccessful,
+    seatbeltId = gm.info.watchVehicleData(getSeatbeltSuccessful,
         ['passenger_seatbelt_fastened']);
 
-    gm.info.watchVehicleData(getPassengerSuccessful,
+    passengerId = gm.info.watchVehicleData(getPassengerSuccessful,
         ['passenger_present']);
 
     function getSeatbeltSuccessful(data){
@@ -277,6 +307,15 @@ function seatBeltWarning() {
         if (passenger_present == 0 && passenger_seatbelt_fastened == 1){
             say("Kid you have a ghost riding shotgun");
         }
+    }
+}
+
+function stopSeatbelt() {
+    if (seatbeltId != 0 || passengerId != 0) {
+        gm.info.clearVehicleData(seatbeltId);
+        gm.info.clearVehicleData(passengerId);
+        seatbeltId = 0;
+        passengerId = 0;
     }
 }
 
@@ -301,6 +340,9 @@ function doorWarning() {
     // }
 }
 
+function stopDoor() {
+
+}
 
 // Accessibility
 function bigFont() {

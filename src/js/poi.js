@@ -11,3 +11,7 @@ function getPOI(type, tabName, elmnt, color) {
     openTab(tabName, elmnt, color);
 	return init(type, lat, lon);
 }
+
+function selectIcon() {
+
+}
