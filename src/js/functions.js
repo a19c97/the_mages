@@ -3,7 +3,7 @@
 // User functions
 
 function createUser() {
-    var form = document.getElementById('myForm');
+    var form = document.getElementById('createForm');
     var name = form.elements['name'].value;
     var address = form.elements['address'].value;
     var phone = form.elements['phone'].value;
@@ -22,6 +22,10 @@ function createUser() {
         speedLimit: 100
     });
 
+    form.elements['name'].value = '';
+    form.elements['address'].value = '';
+    form.elements['phone'].value = '';
+
     var newDiv = document.createElement('div');
 
     var newIcon = document.createElement('img');
@@ -29,20 +33,37 @@ function createUser() {
     newIcon.alt = name;
     newIcon.onclick = function() {
         changePageFocus('tabs', name);
+        document.getElementById("defaultOpen").click();
     };
-    // var newBreak = document.createElement('br');
     var newTitle = document.createElement('p');
     newTitle.innerHTML = name;
 
     newDiv.appendChild(newIcon);
-    // newDiv.appendChild(newBreak);
     newDiv.appendChild(newTitle);
     newDiv.classList.add("user");
 
     var parent = document.getElementById('welcome').children[2];
     parent.appendChild(newDiv);
+
+    var settingsForm = document.getElementById('settingsForm');
+    settingsForm.elements['accessibility'].checked = true;
+    settingsForm.elements['learner'].checked = true;
+    settingsForm.elements['locationMonitoring'].checked = true;
+    settingsForm.elements['speedWarning'].checked = true;
+    settingsForm.elements['speedLimit'].value = 100;
+
+    // Set info text
+    document.getElementById('userInfo').innerHTML = name + ' - ' + phone + ' - ' + address;
+
     changePageFocus('welcome', null);
     userCreated = true;
+}
+
+// Settings
+
+function changeSettings() {
+    var form = document.getElementById('settingsForm');
+    console.log(form.elements);
 }
 
 // Speeding
