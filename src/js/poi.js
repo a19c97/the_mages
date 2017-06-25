@@ -19,5 +19,11 @@ function getPOI(type) {
 	
 	xhr.send(null);
 
-	return r;
+	var result = new Array(Math.min(r.results.length, 10));
+
+	for (var i = 0; i < result.length; i++) {
+		result[i] = r.results[i].name;
+	}
+
+	return result;
 }
