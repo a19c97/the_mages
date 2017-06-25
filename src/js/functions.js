@@ -182,3 +182,48 @@ function checkLocation(){
     }
 
 }
+
+// Learner stuff
+/* Blinker */
+function blinkerReminder() {
+
+}
+
+/* Seat belt */
+function seatBeltWarning() {
+    gm.info.getVehicleData(getPassengerSuccessful,
+        ['passenger_present', 'passenger_seatbelt_fastened']);
+
+    function getPassengerSuccessful(data) {
+        console.log("passenger_present: " + data.passenger_present);
+        console.log("seatbelt on: " + data.passenger_seatbelt_fastened);
+
+        if (data.passenger_present == 1 && data.passenger_seatbelt_fastened == 0){
+            say("Shotgun, put on your seatbelt!");
+        }
+        if (data.passenger_present == 0 && data.passenger_seatbelt_fastened == 1){
+            say("Kid you have a ghost riding shotgun");
+        }
+    }
+}
+
+var prev_gear = "F";
+
+/* Doors */
+function doorWarning() {
+    gm.info.getVehicleData(getGearSuccessful, ['gear_automatic']);
+    var currGear;
+
+    function getGearSuccessful(data) {
+        console.log('Gear is: ', data.gear_automatic);
+        currGear = data.gear_automatic;
+    }
+
+
+    // if in neutral or park and changed to forward or reverse, give warning
+    var neutralOrPark = (prev_gear == "D" || prev_gear == "N");
+    var toForwardOrReverse = (currGear == "E" || currGear == "C");
+    if (neutralOrPark && toForwardOrReverse){
+
+    }
+}
