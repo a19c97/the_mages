@@ -1,10 +1,10 @@
-function getPOI(type, tabName, elmnt, r, g, b) {
+function getPOI(type, tabName, elmnt, color) {
 	var xhr = new XMLHttpRequest();
 	var lat;
 	var lon;
 	gm.info.getCurrentPosition(setCoords, true)
 	
-	openTab(tabName, elmnt, r, g, b);
+	openTab(tabName, elmnt, color);
 	
 	function setCoords(data) {
 		lat = data.coords.latitude;
