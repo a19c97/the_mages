@@ -27,7 +27,7 @@
     <body>
         <div id="welcome">
             <h1>Welcome</h1>
-            <p>Select or create a user below</p>
+            <p>Select or create a user below:</p>
 
             <div id="users">
             </div>
@@ -77,7 +77,7 @@
                         <input type="checkbox" name="feature" value="Learner" />  Learner <br />
                         <input type="checkbox" name="feature" value="Enhanced Accessibility" />  Enhanced Accessibility <br />
                         <br />
-                        <input type="button" value="Save" />
+                        <input type="button" value="Create" />
 
                     </fieldset>
                 </form>
@@ -87,10 +87,11 @@
             </div>
 
 
-            <button class="tablink" id="defaultOpen"
+            <button class="tablink"
                     onclick="openTab('GoHome', this, '22', '96', '186')">Go
                 Home</button>
-            <button class="tablink" onclick="openTab('FavPlaces', this, '176', '63', '84')">Favourite Places</button>
+            <button class="tablink" id="defaultOpen"
+                    onclick="openTab('FavPlaces', this, '176', '63', '84')">Favourite Places</button>
             <button class="tablink" onclick="openTab('Settings', this, '98', '34', '135')">Settings</button>
             <button class="tablink" onclick="changePageFocus('welcome', null)">Log Out</button>
         </div>
