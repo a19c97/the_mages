@@ -2,24 +2,12 @@
 
 // Initial page
 var currentPage = 'welcome';
+var currentUser = {};
 // Array of users
 var users = [];
+// location
+var prevTime = 0;
+
+var userCreated = false;
 
 initializeUI();
-
-checkSpeed();
-
-function checkSpeed(){
-    console.log("Running checkSpeed");
-    var speedLimit = 80;
-    //gm.info.getVehicleData(getSpeedSuccess, ['average_speed']);
-    var id = gm.info.watchVehicleData(getSpeedSuccess, ['average_speed']);
-
-    function getSpeedSuccess(data) {
-        if (data.average_speed > (speedLimit + 20)) {
-            speedingWarning(data.average_speed);
-        } else if (data.average_speed < speedLimit) {
-            resetWarning(data.average_speed);
-        }
-    }
-}

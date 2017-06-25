@@ -6,16 +6,43 @@ function initializeUI() {
     document.getElementById('welcome').style.display = "inline";
 }
 
+/**
+ * Changes the main page in focus. For changing to tabs, name must be a string, otherwise null.
+ */
 function changePageFocus(page, name) {
     document.getElementById(currentPage).style.display = "none";
     document.getElementById(page).style.display = "inline";
     currentPage = page;
     if (name) {
-        console.log(name);
+        for (var i = 0; i < users.length; i++) {
+            if (users[i].name === name) {
+                currentUser = users[i];
+                console.log(users[i]);
+            }
+        }
+    }
+
+    if (currentUser.locationMonitoring){
+        console.log("Monitoring location");
+        checkLocation();
+    }
+    if (currentUser.speedWarning){
+        console.log("Speed warning on");
+        checkSpeed();
+    }
+
+    if (currentUser.accessiblity){
+        console.log("accessiblity on");
+        // do accessiblity stuff
+    }
+
+    if (currentUser.learner){
+        console.log("Learner mode on");
+        // do learner stuff
     }
 }
 
-function openTab(tabName, elmnt, color) {
+function openTab(tabName, elmnt, r, g, b) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -33,7 +60,7 @@ function openTab(tabName, elmnt, color) {
     document.getElementById(tabName).style.display = "block";
 
     // Add the specific color to the button used to open the tab content
-    elmnt.style.backgroundColor = color;
+    elmnt.style.backgroundColor = "rgb\(" + r + "," + g + "," + b + "\)";
 }
 
 // Get the element with id="defaultOpen" and click on it

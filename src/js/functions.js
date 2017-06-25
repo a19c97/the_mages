@@ -4,26 +4,35 @@
 
 function createUser() {
     var form = document.getElementById('myForm');
-    var name = form.elements["name"].value;
+    var name = form.elements['name'].value;
+    var address = form.elements['address'].value;
+    var phone = form.elements['phone'].value;
+    if (!address || !phone) {
+        return;
+    }
     users.push({
         name: name,
-        music: true,
-        map: true,
-        learner: true,
+        address: address,
+        phone: phone,
         accessibility: true,
-        volume: 0.5
+        learner: true,
+        locationMonitoring: true,
+        preferences: {},
+        speedWarning: true,
+        speedLimit: 100
     });
 
     var newIcon = document.createElement('img');
     newIcon.src = "images/user.png";
     newIcon.alt = name;
-    newIcon.classList.add("user", name);
+    newIcon.classList.add("user");
     newIcon.onclick = function() {
         changePageFocus('tabs', name);
     };
     var parent = document.getElementById('welcome').children[2];
     parent.insertBefore(newIcon, parent.firstChild);
     changePageFocus('welcome', null);
+    userCreated = true;
 }
 
 // Speeding
@@ -103,6 +112,63 @@ function sendSpeedingText(speed) {
 
 // Location data
 /* Send location data */
-function sendLocation() {
+function sendLocation(lon, lat) {
+    console.log("Location has changed!");
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "https://32891a36.ngrok.io", true);
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhttp.send("lon=" + lon + "&" + "lat=" + lat);
+}
+
+// My Maps
+
+/* Find locations around me */
+function findLocations(radius) {
+
+}
+
+function modifyWeight() {
+
+}
+
+function myMap() {
+    var mapOptions = {
+        center: new google.maps.LatLng(51.5, -0.12),
+        zoom: 10
+    }
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+
+function checkSpeed(){
+    console.log("Running checkSpeed");
+    var speedLimit = 80;
+    var id = gm.info.watchVehicleData(getSpeedSuccess, ['average_speed']);
+
+    function getSpeedSuccess(data) {
+        if (data.average_speed > (speedLimit + 20)) {
+            speedingWarning(data.average_speed);
+        } else if (data.average_speed < speedLimit) {
+            resetWarning(data.average_speed);
+        }
+    }
+}
+
+function checkLocation(){
+    var id = gm.info.watchPosition(processPosition, true);
+    var thres = 10;
+
+    function processPosition(position){
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        console.log("lat: " + lat + "lon: " + lon);
+
+        var currTime = Date.now();
+
+        if(currTime - prevTime > 10000){
+            console.log("Wow we've moved a lot");
+            prevTime = currTime;
+            sendLocation(lon, lat);
+        }
+    }
 
 }

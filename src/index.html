@@ -9,7 +9,6 @@
 
 		<!-- Your custom files -->
 		<link rel="stylesheet" href="css/app.css" type="text/css">
-		<link rel="stylesheet" href="css/music_player.css" type="text/css">
 
 		<script src="GMLIB/system.js"></script>
 		<script src="GMLIB/info.js"></script>
@@ -42,26 +41,28 @@
 		<div id="create">
 			<h1>Create a User</h1>
 			<form id="myForm">
-				Name <input type="text" name="name" placeholder="John Doe" /><br /><br />
-				<input type="button" onclick="changePageFocus('welcome', null)" value="Cancel"/>
+				Name <br />
+				<input type="text" name="name" placeholder="John Doe" /><br />
+				Phone <br /><input type="text" name="phone" placeholder="(647)-915-3689"
+			/><br />
+				Address <br />
+				<textarea rows="1" cols="50" name="address"
+						  placeholder="44 Devonshire Place, Toronto, ON"></textarea>
+				<br />
 				<input type="button" onclick="createUser()" value="Save"/>
+				<input type="button" onclick="changePageFocus('welcome', null)" value="Cancel"/>
 			</form>
 		</div>
 
 
-		<div id="tabs">
+		<div id="tabs" class="tabs">
 			<div id="GoHome" class="tabcontent">
 				<h3>Go Home</h3>
 				<img src="images/home.png" alt="Home" onclick="goHome()"/>
 			</div>
 
-			<div id="Music" class="tabcontent">
-				<h3>Music</h3>
-			</div>
-
 			<div id="Map" class="tabcontent">
-				<h3>Map</h3>
-				<p>Map is the capital of France.</p>
+				<div id="map" class="map" style="width:300px;height:300px"></div>
 			</div>
 
 			<div id="Settings" class="tabcontent">
@@ -69,23 +70,27 @@
 				<form>
 					<fieldset>
 						<legend>Please select features</legend>
-						<input type="checkbox" name="feature" value="Music" /> Music <br />
-						<input type="checkbox" name="feature" value="Map" /> Map <br />
+						<input type="checkbox" name="feature" value="Speed tracking" /> Speed tracking <br />
+						<input type="checkbox" name="feature" value="Location tracking" /> Location tracking <br />
 						<input type="checkbox" name="feature" value="Learner" />  Learner <br />
 						<input type="checkbox" name="feature" value="Enhanced Accessibility" />  Enhanced Accessibility <br />
-						Volume <br /><input type="range" min="0" max="1" value="0.25" step="0.05"><br />
+						<br />
 						<input type="button" value="Save" />
+
 					</fieldset>
 				</form>
 			</div>
 
-			<button class="tablink" onclick="openTab('GoHome', this, 'blue')">Go Home</button>
-			<button class="tablink" onclick="openTab('Music', this, 'red')" id="defaultOpen">Music</button>
-			<button class="tablink" onclick="openTab('Map', this, 'green')">Map</button>
-			<button class="tablink" onclick="openTab('Settings', this, 'mediumpurple')">Settings</button>
+			<div id="LogOut" class="tabcontent">
+			</div>
 
-			<br />
-			<button onclick="changePageFocus('welcome', null)">Go to welcome</button>
+
+			<button class="tablink" id="defaultOpen"
+					onclick="openTab('GoHome', this, '22', '96', '186')">Go
+				Home</button>
+			<button class="tablink" onclick="openTab('Map', this, '176', '63', '84')">Map</button>
+			<button class="tablink" onclick="openTab('Settings', this, '98', '34', '135')">Settings</button>
+			<button class="tablink" onclick="changePageFocus('welcome', null)">Log Out</button>
 		</div>
 
 		<!-- App code: -->
@@ -94,5 +99,10 @@
 		<script src="js/home.js"></script>
 		<script src="js/nav.js"></script>
 		<script src="js/poi.js"></script>
+
+		<!-- Google map -->
+		<script async defer
+				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBo-j489qE4Ea7UOkJvCMD_SJnlt2xfXs&callback=myMap">
+		</script>
 	</body>
 </html>
