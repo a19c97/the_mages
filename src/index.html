@@ -69,7 +69,7 @@
                         <input type="checkbox" name="feature" value="Learner" />  Learner <br />
                         <input type="checkbox" name="feature" value="Enhanced Accessibility" />  Enhanced Accessibility <br />
                         Volume <br /><input type="range" min="0" max="1" value="0.25" step="0.05"><br />
-                        <input type="button" value="Save" />
+                        <input type="button" value="Save"/>
                     </fieldset>
                 </form>
             </div>
@@ -77,10 +77,8 @@
             <button class="tablink" onclick="openTab('GoHome', this, 'blue')">Go Home</button>
             <button class="tablink" onclick="openTab('Map', this, 'green')">Map</button>
             <button class="tablink" onclick="openTab('Settings', this, 'mediumpurple')">Settings</button>
-            <button class="tablink" onclick="openTab('LogOut', this, 'red')" id="defaultOpen">Log Out</button>
-
-            <br />
-            <button onclick="changePageFocus('welcome', null)">Go to welcome</button>
+            <button class="tablink" onclick="changePageFocus('welcome')" id="defaultOpen">Log
+                Out</button>
         </div>
 
         <!-- App code: -->

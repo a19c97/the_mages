@@ -11,7 +11,12 @@ function changePageFocus(page, name) {
     document.getElementById(page).style.display = "inline";
     currentPage = page;
     if (name) {
-        console.log(name);
+        for (var i = 0; i < users.length; i++) {
+            if (users[i].name === name) {
+                currentUser = users[i];
+                console.log(users[i]);
+            }
+        }
     }
 }
 

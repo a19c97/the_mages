@@ -2,6 +2,7 @@
 
 // Initial page
 var currentPage = 'welcome';
+var currentUser = {};
 // Array of users
 var users = [];
 
