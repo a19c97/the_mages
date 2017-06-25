@@ -40,22 +40,25 @@
   display: none;
   padding: 50px;
   text-align: center;
+    height: 239px;
 }
 
 /* Style each tab content individually */
-#Music {background-color:red;}
+#LogOut {background-color:red;}
 #Map {background-color:green;}
 #GoHome {background-color:blue;}
 #Settings {background-color:mediumpurple;}
 
 fieldset {
-  display: block;
-  margin-left: 2px;
-  margin-right: 2px;
-  padding-top: 0.35em;
-  padding-bottom: 0.625em;
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-  border: 2px;
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px;
+    text-align: left;
+    position: absolute;
+    left: 300px;
 }
-
