@@ -156,32 +156,16 @@
 				<h3>Settings</h3>
 				<form>
 
-					<fieldset>
+                    <fieldset id="settingsForm">
+                        <p id="userInfo"></p>
 						<legend>Please select features</legend>
-						<input type="checkbox" name="feature" value="Speed tracking"/> Speed tracking <br/>
-						<input type="checkbox" name="feature" value="Location tracking"/> Location tracking <br/>
+						<input type="checkbox" name="feature" value="Speed tracking" onclick="speedCheck"/> Speed tracking <br/>
+						<input type="checkbox" name="feature" value="Location tracking" onclick="locationCheck()"/> Location tracking <br/>
 						<input type="checkbox" name="feature" value="Learner" onclick="learnerCheck()"/> Learner <br/>
-						<input type="checkbox" name="feature" value="Enhanced Accessibility"/> Enhanced Accessibility <br/>
-					<fieldset id="settingsForm">
-						<p id="userInfo"></p>
-						<input type="checkbox" name="accessibility"/>
-							Enhanced accessibility
-						<br/>
-						<input type="checkbox" name="learner"/>
-							Learner mode
-						<br/>
-						<input type="checkbox" name="locationMonitoring"/>
-							Location monitoring
-						<br/>
-						<input type="checkbox" name="speedWarning"/>
-							Speed warning
-						<br/><br/>
+						<input type="checkbox" name="feature" value="Enhanced Accessibility" onclick="accessCheck()"/> Enhanced Accessibility <br/>
 						<input type="number" name="speedLimit"/>
 							Speed limit (kmph)
 						<br/><br/>
-                        <button type="button" value="Save" onclick="changeSettings()">
-							Save
-						</button>
 					</fieldset>
 				</form>
 			</div>

@@ -73,7 +73,37 @@ document.getElementById("defaultOpen").click();
 
 // Checkbox stuff
 function learnerCheck(){
-    console.log("Learner check/uncheck");
     users[currentUserIndex].learner = !users[currentUserIndex].learner;
-    console.log("Learner: " + users[currentUserIndex].learner);
+    if (users[currentUserIndex].learner) {
+        say("Learner mode on");
+    } else {
+        say("Learner mode off");
+    }
+}
+
+function accessCheck() {
+    users[currentUserIndex].accessibility = !users[currentUserIndex].accessibility;
+    if (users[currentUserIndex].accessibility) {
+        say("Enhanced accessibility on");
+    } else {
+        say("Enhanced accessibility off");
+    }
+}
+
+function speedCheck() {
+    users[currentUserIndex].speedWarning = !users[currentUserIndex].speedWarning;
+    if (users[currentUserIndex].speedWarning) {
+        say("Speed warning on");
+    } else {
+        say("Speed warning off");
+    }
+}
+
+function locationCheck() {
+    users[currentUserIndex].locationMonitoring = !users[currentUserIndex].locationMonitoring;
+    if (users[currentUserIndex].locationMonitoring) {
+        say("Locatoin monitoring on");
+    } else {
+        say("Location monitoring off");
+    }
 }
