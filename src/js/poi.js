@@ -1,8 +1,10 @@
-function getPOI(type) {
+function getPOI(type, tabName, elmnt, r, g, b) {
 	var xhr = new XMLHttpRequest();
 	var lat;
 	var lon;
 	gm.info.getVehicleData(setCoords, ['gps_lat', 'gps_long'])
+
+    openTab(tabName, elmnt, r, g, b);
 
 	function setCoords(data) {
 		lat = data.gps_lat

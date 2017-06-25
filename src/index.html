@@ -65,9 +65,13 @@
 
             <div id="FavPlaces" class="tabcontent">
                 <h3>Favourite Places</h3>
-                <img src="images/takeoutbig.png" alt="Takeout" hspace="5" />
-                <img src="images/Hbig.png" alt="Hospital" hspace="5" />
-                <img src="images/speedometerbigger.png" alt="Gas stations" hspace="5" />
+                <img src="images/takeoutbig.png" alt="Food" hspace="5" onclick="getPOI('Food', 'FavSub', this, '176', '63', '84')"/>
+                <img src="images/Hbig.png" alt="Hospital" hspace="5" onclick="getPOI('Hospital', 'FavSub', this, '176', '63', '84')"/>
+                <img src="images/speedometerbigger.png" alt="Gas stations" hspace="5" onclick="getPOI(Gas station)"/>
+            </div>
+
+            <div id="FavSub" class="tabcontent">
+                <h3>Restults</h3>
             </div>
 
             <div id="Map" class="tabcontent">
@@ -107,6 +111,7 @@
         <script src="js/functions.js"></script>
         <script src="js/home.js"></script>
         <script src="js/app.js"></script>
+        <script src="js/poi.js"></script>
 
     </body>
 </html>
