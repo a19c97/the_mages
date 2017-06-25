@@ -44,9 +44,9 @@
 }
 
 /* Style each tab content individually */
-#LogOut {background-color:red;}
-#Map {background-color:green;}
-#GoHome {background-color:blue;}
+#LogOut {background-color:rgb(176,63,84);}
+#Map {background-color:rgb(176,63,84);}
+#GoHome {background-color:rgb(22,96,186);}
 #Settings {background-color:mediumpurple;}
 
 fieldset {
