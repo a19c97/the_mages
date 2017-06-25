@@ -22,25 +22,15 @@ function createUser() {
         speedLimit: 100
     });
 
-    var newDiv = document.createElement('div');
-
     var newIcon = document.createElement('img');
-    newIcon.src = "images/" + USER_PIC_URLS[users.length % USER_PIC_URLS.length];
+    newIcon.src = "images/user.png";
     newIcon.alt = name;
+    newIcon.classList.add("user", name);
     newIcon.onclick = function() {
         changePageFocus('tabs', name);
     };
-    // var newBreak = document.createElement('br');
-    var newTitle = document.createElement('p');
-    newTitle.innerHTML = name;
-
-    newDiv.appendChild(newIcon);
-    // newDiv.appendChild(newBreak);
-    newDiv.appendChild(newTitle);
-    newDiv.classList.add("user");
-
     var parent = document.getElementById('welcome').children[2];
-    parent.appendChild(newDiv);
+    parent.insertBefore(newIcon, parent.firstChild);
     changePageFocus('welcome', null);
     userCreated = true;
 }
@@ -132,15 +122,6 @@ function sendLocation(lon, lat) {
 
 // My Maps
 
-/* Find locations around me */
-function findLocations(radius) {
-
-}
-
-function modifyWeight() {
-
-}
-
 function myMap() {
     var mapOptions = {
         center: new google.maps.LatLng(51.5, -0.12),
@@ -191,17 +172,31 @@ function blinkerReminder() {
 
 /* Seat belt */
 function seatBeltWarning() {
-    gm.info.getVehicleData(getPassengerSuccessful,
-        ['passenger_present', 'passenger_seatbelt_fastened']);
+    var passenger_present = 0;
+    var passenger_seatbelt_fastened = 0;
 
-    function getPassengerSuccessful(data) {
-        console.log("passenger_present: " + data.passenger_present);
-        console.log("seatbelt on: " + data.passenger_seatbelt_fastened);
+    gm.info.watchVehicleData(getSeatbeltSuccessful,
+        ['passenger_seatbelt_fastened']);
 
-        if (data.passenger_present == 1 && data.passenger_seatbelt_fastened == 0){
+    gm.info.watchVehicleData(getPassengerSuccessful,
+        ['passenger_present']);
+
+    function getSeatbeltSuccessful(data){
+        passenger_seatbelt_fastened = data.passenger_seatbelt_fastened;
+        checkSeatbelt();
+    }
+
+    function getPassengerSuccessful(data){
+        passenger_present = data.passenger_present;
+        checkSeatbelt();
+    }
+
+    function checkSeatbelt() {
+
+        if (passenger_present == 1 && passenger_seatbelt_fastened == 0){
             say("Shotgun, put on your seatbelt!");
         }
-        if (data.passenger_present == 0 && data.passenger_seatbelt_fastened == 1){
+        if (passenger_present == 0 && passenger_seatbelt_fastened == 1){
             say("Kid you have a ghost riding shotgun");
         }
     }
