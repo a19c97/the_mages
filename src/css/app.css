@@ -17,6 +17,10 @@
     padding: 0px;
 }
 
+body {
+    overflow: hidden;
+}
+
 .user {
     padding: 4px 10px;
     display: inline-block;
