@@ -78,3 +78,7 @@ fieldset {
 .big-font {
     font-size: 22px;
 }
+
+.user {
+    background-color:rgb(197,215,237);
+}
