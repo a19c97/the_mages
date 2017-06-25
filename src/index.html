@@ -23,6 +23,7 @@
 		<!-- <script src="GMLIB/util.js"></script> -->
 		<script src="GMLIB/voice.js"></script>
 		<script>
+<<<<<<< HEAD
 		var result;
 		function init(type = 'Food', lat = 42.32877027777778, lon = -83.03956861111111) {
 			var loc = {lat: lat, lng: lon};
@@ -54,6 +55,40 @@
 				result = [];
 			}
 		}
+=======
+			// Why is this here???
+            var result;
+            function init(type = 'Food', lat = 42.32877027777778, lon = -83.03956861111111) {
+                var loc = {lat: lat, lng: lon};
+
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: loc,
+                    zoom: 15
+                });
+
+                infowindow = new google.maps.InfoWindow();
+                var service = new google.maps.places.PlacesService(map);
+                service.nearbySearch({
+                    location: loc,
+                    radius: 1000,
+                    type: [type]
+                }, callback);
+                return result;
+            }
+
+            function callback(results, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    result = new Array(Math.min(results.length, 10));
+                    for (var i = 0; i < result.length; i++) {
+                        result[i] = [results[i].name,
+                        results[i].geometry.location.lat(),
+                        results[i].geometry.location.lng()];
+                    }
+                } else {
+                    result = [];
+                }
+            }
+>>>>>>> c132f5d989397b1fedd4f9919ad65ab9820caeb0
 		</script>
 	</head>
 	<body>
@@ -75,7 +110,7 @@
 
 		<div id="create">
 			<h1>Create a User</h1>
-			<form id="myForm">
+			<form id="createForm">
 				Name <br />
 				<input type="text" name="name" placeholder="John Doe" /><br />
 				Phone <br /><input type="text" name="phone" placeholder="(647)-915-3689"/><br />
@@ -83,7 +118,7 @@
 				<textarea rows="1" cols="50" name="address"
 						  placeholder="341 Yonge Street, Toronto, ON M5B 1S1"></textarea><br />
 				<br />
-				<input type="button" onclick="createUser()" value="Save"/>
+				<input type="button" onclick="createUser()" value="Create"/>
 				<input type="button" onclick="changePageFocus('welcome', null)" value="Cancel"/>
 			</form>
 		</div>
@@ -92,7 +127,7 @@
 		<div id="tabs" class="tabs">
 			<div id="GoHome" class="tabcontent">
 				<h3>Go Home</h3>
-				<img src="images/home.png" alt="Home" onclick="goHome(currentUser.address)"/>
+				<img src="images/home.png" alt="Home" onclick="goHome(users[currentUserIndex].address)"/>
 			</div>
 
 			<div id="FavPlaces" class="tabcontent">
@@ -120,22 +155,39 @@
 			<div id="Settings" class="tabcontent">
 				<h3>Settings</h3>
 				<form>
+
 					<fieldset>
 						<legend>Please select features</legend>
 						<input type="checkbox" name="feature" value="Speed tracking"/> Speed tracking <br/>
 						<input type="checkbox" name="feature" value="Location tracking"/> Location tracking <br/>
 						<input type="checkbox" name="feature" value="Learner" onclick="learnerCheck()"/> Learner <br/>
 						<input type="checkbox" name="feature" value="Enhanced Accessibility"/> Enhanced Accessibility <br/>
+					<fieldset id="settingsForm">
+						<p id="userInfo"></p>
+						<input type="checkbox" name="accessibility"/>
+							Enhanced accessibility
 						<br/>
-						<input type="button" value="Save"/>
-
+						<input type="checkbox" name="learner"/>
+							Learner mode
+						<br/>
+						<input type="checkbox" name="locationMonitoring"/>
+							Location monitoring
+						<br/>
+						<input type="checkbox" name="speedWarning"/>
+							Speed warning
+						<br/><br/>
+						<input type="number" name="speedLimit"/>
+							Speed limit (kmph)
+						<br/><br/>
+                        <button type="button" value="Save" onclick="changeSettings()">
+							Save
+						</button>
 					</fieldset>
 				</form>
 			</div>
 
 			<div id="LogOut" class="tabcontent">
 			</div>
-
 
 			<button class="tablink" onclick="openTab('GoHome', this, 'rgb(22,96,186)')">Go Home</button>
 			<button class="tablink" id="defaultOpen"

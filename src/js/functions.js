@@ -3,7 +3,7 @@
 // User functions
 
 function createUser() {
-    var form = document.getElementById('myForm');
+    var form = document.getElementById('createForm');
     var name = form.elements['name'].value;
     var address = form.elements['address'].value;
     var phone = form.elements['phone'].value;
@@ -22,17 +22,50 @@ function createUser() {
         speedLimit: 100
     });
 
+    form.elements['name'].value = '';
+    form.elements['address'].value = '';
+    form.elements['phone'].value = '';
+
+    var newDiv = document.createElement('div');
+
     var newIcon = document.createElement('img');
-    newIcon.src = "images/user.png";
+    newIcon.src = "images/" + USER_PIC_URLS[users.length % USER_PIC_URLS.length];
     newIcon.alt = name;
-    newIcon.classList.add("user", name);
+    newIcon.classList.add("user");
     newIcon.onclick = function() {
         changePageFocus('tabs', name);
+        document.getElementById("defaultOpen").click();
     };
-    var parent = document.getElementById('welcome').children[2];
-    parent.insertBefore(newIcon, parent.firstChild);
+
+    var newTitle = document.createElement('p');
+    newTitle.innerHTML = name;
+
+    newDiv.appendChild(newIcon);
+    newDiv.appendChild(newTitle);
+    newDiv.classList.add("user");
+
+    var parent = document.getElementById('users');
+    parent.appendChild(newDiv);
+
+    var settingsForm = document.getElementById('settingsForm');
+    settingsForm.elements['accessibility'].checked = true;
+    settingsForm.elements['learner'].checked = true;
+    settingsForm.elements['locationMonitoring'].checked = true;
+    settingsForm.elements['speedWarning'].checked = true;
+    settingsForm.elements['speedLimit'].value = 100;
+
+    // Set info text
+    document.getElementById('userInfo').innerHTML = name + ' - ' + phone + ' - ' + address;
+
     changePageFocus('welcome', null);
-    userCreated = true;
+    console.log(users);
+}
+
+// Settings
+
+function changeSettings() {
+    var form = document.getElementById('settingsForm');
+    console.log(form.elements);
 }
 
 // Speeding
