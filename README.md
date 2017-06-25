@@ -1,6 +1,6 @@
-# DUDE, Where's My Car?
+# DUDE, _Where's My Car?_
 
-## Dynamic User Driving Enhancement
+# Dynamic User Driving Enhancement
 
 ## 1. The Challenge
 
