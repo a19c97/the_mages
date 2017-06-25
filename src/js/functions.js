@@ -79,7 +79,8 @@ function loadSettings() {
     // Update info text
     document.getElementById('userInfo').innerHTML = currentUser.name + ' - ' + currentUser.phone + ' - ' + currentUser.address;
 
-    // TODO: update actual settings
+    // Update actual settings
+    runSettings();
 }
 
 // Speeding
