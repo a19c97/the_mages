@@ -27,12 +27,12 @@
 		var result;
 		function init(type = 'Food', lat = 42.32877027777778, lon = -83.03956861111111) {
 			var loc = {lat: lat, lng: lon};
-			
+
 			map = new google.maps.Map(document.getElementById('map'), {
 				center: loc,
 				zoom: 15
 			});
-			
+
 			infowindow = new google.maps.InfoWindow();
 			var service = new google.maps.places.PlacesService(map);
 			service.nearbySearch({
@@ -81,7 +81,7 @@
 
 			return result;
 		}
-		
+
 		function callback(results, status) {
 			if (status === google.maps.places.PlacesServiceStatus.OK) {
 				result = new Array(Math.min(results.length, 6));
@@ -160,10 +160,10 @@
                     <fieldset id="settingsForm">
                         <p id="userInfo"></p>
 						<legend>Please select features</legend>
-						<input type="checkbox" name="speedWarning" onclick="speedCheck()"/> Speed tracking <br/>
-						<input type="checkbox" name="locationMonitoring" onclick="locationCheck()"/> Location tracking <br/>
-						<input type="checkbox" name="learner" onclick="learnerCheck()"/> Learner mode<br/>
-						<input type="checkbox" name="accessibility" onclick="accessCheck()"/> Enhanced accessibility <br/>
+						<input type="checkbox" name="speedWarning" onclick="speedCheck()" id="box"/> Speed tracking <br/>
+						<input type="checkbox" name="locationMonitoring" onclick="locationCheck()" id="box"/> Location tracking <br/>
+						<input type="checkbox" name="learner" onclick="learnerCheck()" id="box"/> Learner mode<br/>
+						<input type="checkbox" name="accessibility" onclick="accessCheck()" id="box"/> Enhanced accessibility <br/>
 						<br/><br/>
 					</fieldset>
 				</form>

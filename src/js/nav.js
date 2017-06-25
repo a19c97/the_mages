@@ -44,7 +44,9 @@ function runSettings() {
 
     if (users[currentUserIndex].accessibility){
         console.log("accessiblity on");
-        // do accessiblity stuff
+        bigFont();
+    } else {
+        smallFont();
     }
 
     if (users[currentUserIndex].learner){
