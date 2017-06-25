@@ -126,29 +126,23 @@ function speedingWarning(speed) {
     console.log("Current speed: " + speed + " Strike: " + strike);
 
     switch (strike) {
-        // case 0:
-        //     say("You are going too fast.");
-        //     break;
         case 1:
-            say("You are going too fast!");
+            say("You are going too fast! I'm scared!!!");
             break;
         case 2:
-            say("I'm scared!!!");
-            break;
-        case 3:
             say("Slow down or I'll text mom.");
             break;
-        case 4:
+        case 3:
             say("I'm not kidding.");
             break;
-        case 5:
+        case 4:
             say("That's it - I'm texting mom.");
             if (textingLock) return;
             textingLock = true;
             setTimeout(function() {
                 textingLock = false;
             }, 6000);
-            //sendSpeedingText(speed);
+            sendSpeedingText(speed);
             console.log("Texting mom");
             strike = 0;
             break;
@@ -326,9 +320,6 @@ function seatBeltWarning() {
 
         if (passenger_present == 1 && passenger_seatbelt_fastened == 0){
             say("Shotgun, put on your seatbelt!");
-        }
-        if (passenger_present == 0 && passenger_seatbelt_fastened == 1){
-            say("Kid you have a ghost riding shotgun");
         }
     }
 }
