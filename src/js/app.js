@@ -15,6 +15,4 @@ var users = [];
 // location
 var prevTime = 0;
 
-var userCreated = false;
-
 initializeUI();
