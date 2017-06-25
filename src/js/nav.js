@@ -16,28 +16,28 @@ function changePageFocus(page, name) {
     if (name) {
         for (var i = 0; i < users.length; i++) {
             if (users[i].name === name) {
-                currentUser = users[i];
+                currentUserIndex = i;
                 console.log(users[i]);
             }
         }
     }
 
-    if (page != 'welcome'){
-        if (currentUser.locationMonitoring){
+    if (page !== 'welcome'){
+        if (users[currentUserIndex].locationMonitoring){
             console.log("Monitoring location");
             checkLocation();
         }
-        if (currentUser.speedWarning){
+        if (users[currentUserIndex].speedWarning){
             console.log("Speed warning on");
             checkSpeed();
         }
 
-        if (currentUser.accessiblity){
+        if (users[currentUserIndex].accessibility){
             console.log("accessiblity on");
             // do accessiblity stuff
         }
 
-        if (currentUser.learner){
+        if (users[currentUserIndex].learner){
             console.log("Learner mode on");
             // do learner stuff
             //doorWarning();
