@@ -24,7 +24,7 @@
 		<script src="GMLIB/voice.js"></script>
 		<script>
 
-		var result;
+		var result = 0;
 		function init(type = 'Food', lat = 42.32877027777778, lon = -83.03956861111111) {
 			var loc = {lat: lat, lng: lon};
 
@@ -41,34 +41,35 @@
 				type: [type]
 			}, callback);
 
-            for (i=0; i<result.length; i++) {
-                var newDiv = document.createElement('div');
+            if (result.length != undefined){
+                for (i=0; i<result.length; i++) {
+                    var newDiv = document.createElement('div');
 
-                var newIcon = document.createElement('img');
+                    var newIcon = document.createElement('img');
 
-				if (type == 'Food') {
-				 newIcon.src = "images/takeoutsmall.png";
-				 } else if (type == 'ATM') {
-				 newIcon.src = "images/atmsmall.png";
-				 } else if (type == 'Repair') {
-				 newIcon.src = "images/repairsmall.png";
-				 } else if (type == 'Gas station') {
-				 newIcon.src = "images/speedometersmaller.png";
-				 }
+    				if (type == 'Food') {
+    				 newIcon.src = "images/takeoutsmall.png";
+    				 } else if (type == 'ATM') {
+    				 newIcon.src = "images/atmsmall.png";
+    				 } else if (type == 'Repair') {
+    				 newIcon.src = "images/repairsmall.png";
+    				 } else if (type == 'Gas station') {
+    				 newIcon.src = "images/speedometersmaller.png";
+    				 }
 
-				 newIcon.onclick = selectIcon();
+    				 newIcon.onclick = selectIcon();
 
-                newDiv.appendChild(newIcon);
-                newDiv.classList.add("block");
+                    newDiv.appendChild(newIcon);
+                    newDiv.classList.add("block");
 
-                var newTitle = document.createElement('p');
-                newTitle.innerHTML = result[i][0];
-                newDiv.appendChild(newTitle);
+                    var newTitle = document.createElement('p');
+                    newTitle.innerHTML = result[i][0];
+                    newDiv.appendChild(newTitle);
 
-                var parent = document.getElementById('Results');
-                parent.appendChild(newDiv);
+                    var parent = document.getElementById('Results');
+                    parent.appendChild(newDiv);
+                }
             }
-
 			return result;
 		}
 
