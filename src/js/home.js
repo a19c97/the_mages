@@ -1,6 +1,6 @@
-function goHome() {
+function goHome(dest) {
 	var dest = {
-		address: '341 Yonge St, Toronto, ON M5B 1S1'
+		address: dest
 	};
 	gm.nav.setDestination(success, failure, dest)
 
