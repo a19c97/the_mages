@@ -22,26 +22,28 @@ function changePageFocus(page, name) {
         }
     }
 
-    if (currentUser.locationMonitoring){
-        console.log("Monitoring location");
-        checkLocation();
-    }
-    if (currentUser.speedWarning){
-        console.log("Speed warning on");
-        checkSpeed();
-    }
+    if (page != 'welcome'){
+        if (currentUser.locationMonitoring){
+            console.log("Monitoring location");
+            checkLocation();
+        }
+        if (currentUser.speedWarning){
+            console.log("Speed warning on");
+            checkSpeed();
+        }
 
-    if (currentUser.accessiblity){
-        console.log("accessiblity on");
-        // do accessiblity stuff
-    }
+        if (currentUser.accessiblity){
+            console.log("accessiblity on");
+            // do accessiblity stuff
+        }
 
-    if (currentUser.learner){
-        console.log("Learner mode on");
-        // do learner stuff
-        doorWarning();
-        blinkerReminder();
-        seatBeltWarning();
+        if (currentUser.learner){
+            console.log("Learner mode on");
+            // do learner stuff
+            doorWarning();
+            blinkerReminder();
+            seatBeltWarning();
+        }
     }
 }
 
