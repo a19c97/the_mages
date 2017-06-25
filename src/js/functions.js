@@ -172,3 +172,19 @@ function checkLocation(){
     }
 
 }
+
+// Learner stuff
+/* Blinker */
+function blinkerReminder() {
+
+}
+
+/* Seat belt */
+function seatBeltWarning() {
+
+}
+
+/* Doors */
+function doorWarning() {
+    
+}
