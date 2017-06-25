@@ -26,12 +26,12 @@
 		var result;
 		function init(type = 'Food', lat = 42.32877027777778, lon = -83.03956861111111) {
 			var loc = {lat: lat, lng: lon};
-			
+
 			map = new google.maps.Map(document.getElementById('map'), {
 				center: loc,
 				zoom: 15
 			});
-			
+
 			infowindow = new google.maps.InfoWindow();
 			var service = new google.maps.places.PlacesService(map);
 			service.nearbySearch({
@@ -41,7 +41,7 @@
 			}, callback);
 			return result;
 		}
-		
+
 		function callback(results, status) {
 			if (status === google.maps.places.PlacesServiceStatus.OK) {
 				result = new Array(Math.min(results.length, 10));
@@ -124,7 +124,7 @@
 						<legend>Please select features</legend>
 						<input type="checkbox" name="feature" value="Speed tracking"/> Speed tracking <br/>
 						<input type="checkbox" name="feature" value="Location tracking"/> Location tracking <br/>
-						<input type="checkbox" name="feature" value="Learner"/> Learner <br/>
+						<input type="checkbox" name="feature" value="Learner" onclick="learnerCheck()"/> Learner <br/>
 						<input type="checkbox" name="feature" value="Enhanced Accessibility"/> Enhanced Accessibility <br/>
 						<br/>
 						<input type="button" value="Save"/>

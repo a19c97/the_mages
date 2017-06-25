@@ -14,11 +14,11 @@ function createUser() {
         name: name,
         address: address,
         phone: phone,
-        accessibility: true,
-        learner: true,
-        locationMonitoring: true,
+        accessibility: false,
+        learner: false,
+        locationMonitoring: false,
         preferences: {},
-        speedWarning: true,
+        speedWarning: false,
         speedLimit: 100
     });
 

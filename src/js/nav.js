@@ -70,3 +70,10 @@ function openTab(tabName, elmnt, color) {
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+
+// Checkbox stuff
+function learnerCheck(){
+    console.log("Learner check/uncheck");
+    currentUser.learner = !currentUser.learner;
+    console.log("Learner: " + currentUser.learner);
+}
