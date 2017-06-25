@@ -3,7 +3,7 @@
 // User functions
 
 function createUser() {
-    var form = document.getElementById('myForm');
+    var form = document.getElementById('createForm');
     var name = form.elements['name'].value;
     var address = form.elements['address'].value;
     var phone = form.elements['phone'].value;
@@ -14,35 +14,72 @@ function createUser() {
         name: name,
         address: address,
         phone: phone,
-        accessibility: true,
-        learner: true,
-        locationMonitoring: true,
+        accessibility: false,
+        learner: false,
+        locationMonitoring: false,
         preferences: {},
-        speedWarning: true,
-        speedLimit: 100
+        speedWarning: false
     });
+
+    form.elements['name'].value = '';
+    form.elements['address'].value = '';
+    form.elements['phone'].value = '';
 
     var newDiv = document.createElement('div');
 
     var newIcon = document.createElement('img');
     newIcon.src = "images/" + USER_PIC_URLS[users.length % USER_PIC_URLS.length];
     newIcon.alt = name;
+    newIcon.classList.add("user");
     newIcon.onclick = function() {
         changePageFocus('tabs', name);
+        document.getElementById("defaultOpen").click();
     };
-    // var newBreak = document.createElement('br');
+
     var newTitle = document.createElement('p');
     newTitle.innerHTML = name;
 
     newDiv.appendChild(newIcon);
-    // newDiv.appendChild(newBreak);
     newDiv.appendChild(newTitle);
     newDiv.classList.add("user");
 
-    var parent = document.getElementById('welcome').children[2];
+    var parent = document.getElementById('users');
     parent.appendChild(newDiv);
+
+    var settingsForm = document.getElementById('settingsForm');
+    settingsForm.elements['accessibility'].checked = false;
+    settingsForm.elements['learner'].checked = false;
+    settingsForm.elements['locationMonitoring'].checked = false;
+    settingsForm.elements['speedWarning'].checked = false;
+
+    // Set info text
+    document.getElementById('userInfo').innerHTML = name + ' - ' + phone + ' - ' + address;
+
     changePageFocus('welcome', null);
-    userCreated = true;
+    console.log(users);
+}
+
+// Settings
+
+/**
+ * Loads settings of currently selected user.
+ */
+function loadSettings() {
+    var currentUser = users[currentUserIndex];
+    console.log(currentUser);
+
+    // UI updates
+
+    var settingsForm = document.getElementById('settingsForm');
+    settingsForm.elements['accessibility'].checked = currentUser.accessibility;
+    settingsForm.elements['learner'].checked = currentUser.learner;
+    settingsForm.elements['locationMonitoring'].checked = currentUser.locationMonitoring;
+    settingsForm.elements['speedWarning'].checked = currentUser.speedWarning;
+
+    // Update info text
+    document.getElementById('userInfo').innerHTML = currentUser.name + ' - ' + currentUser.phone + ' - ' + currentUser.address;
+
+    // TODO: update actual settings
 }
 
 // Speeding
@@ -132,15 +169,6 @@ function sendLocation(lon, lat) {
 
 // My Maps
 
-/* Find locations around me */
-function findLocations(radius) {
-
-}
-
-function modifyWeight() {
-
-}
-
 function myMap() {
     var mapOptions = {
         center: new google.maps.LatLng(51.5, -0.12),
@@ -164,6 +192,7 @@ function checkSpeed(){
 }
 
 function checkLocation(){
+
     var id = gm.info.watchPosition(processPosition, true);
     var thres = 10;
 
@@ -180,28 +209,71 @@ function checkLocation(){
             sendLocation(lon, lat);
         }
     }
-
 }
 
 // Learner stuff
+
 /* Blinker */
+var prev_yaw_rate = 0;
+var yaw_rate = 0;
+
 function blinkerReminder() {
 
+    var turn_signal_left = 0x00;
+    var turn_signal_right = 0x00;
+
+    gm.info.watchVehicleData(getYawSuccessful, ['yaw_rate']);
+
+    function getYawSuccessful(data) {
+        yaw_rate = data.yaw_rate;
+        if (Math.abs(yaw_rate - prev_yaw_rate) > 15){
+            console.log("You're turning a lot!");
+            prev_yaw_rate = yaw_rate;
+            checkBlinkers();
+        }
+    }
+
+    function checkBlinkers() {
+        gm.info.getVehicleData(getBlinkerSuccessful,
+            ['turn_signal_right', 'turn_signal_left']);
+
+        function getBlinkerSuccessful(data) {
+            if (yaw_rate < 0 && data.turn_signal_left == 0x00) {
+                say("Remember to signal left!");
+            } else if (yaw_rate > 0 && data.turn_signal_right == 0x00) {
+                say("Remember to signal right!");
+            }
+        }
+    }
 }
 
 /* Seat belt */
 function seatBeltWarning() {
-    gm.info.getVehicleData(getPassengerSuccessful,
-        ['passenger_present', 'passenger_seatbelt_fastened']);
+    var passenger_present = 0;
+    var passenger_seatbelt_fastened = 0;
 
-    function getPassengerSuccessful(data) {
-        console.log("passenger_present: " + data.passenger_present);
-        console.log("seatbelt on: " + data.passenger_seatbelt_fastened);
+    gm.info.watchVehicleData(getSeatbeltSuccessful,
+        ['passenger_seatbelt_fastened']);
 
-        if (data.passenger_present == 1 && data.passenger_seatbelt_fastened == 0){
+    gm.info.watchVehicleData(getPassengerSuccessful,
+        ['passenger_present']);
+
+    function getSeatbeltSuccessful(data){
+        passenger_seatbelt_fastened = data.passenger_seatbelt_fastened;
+        checkSeatbelt();
+    }
+
+    function getPassengerSuccessful(data){
+        passenger_present = data.passenger_present;
+        checkSeatbelt();
+    }
+
+    function checkSeatbelt() {
+
+        if (passenger_present == 1 && passenger_seatbelt_fastened == 0){
             say("Shotgun, put on your seatbelt!");
         }
-        if (data.passenger_present == 0 && data.passenger_seatbelt_fastened == 1){
+        if (passenger_present == 0 && passenger_seatbelt_fastened == 1){
             say("Kid you have a ghost riding shotgun");
         }
     }
@@ -211,19 +283,19 @@ var prev_gear = "F";
 
 /* Doors */
 function doorWarning() {
-    gm.info.getVehicleData(getGearSuccessful, ['gear_automatic']);
-    var currGear;
-
-    function getGearSuccessful(data) {
-        console.log('Gear is: ', data.gear_automatic);
-        currGear = data.gear_automatic;
-    }
-
-
-    // if in neutral or park and changed to forward or reverse, give warning
-    var neutralOrPark = (prev_gear == "D" || prev_gear == "N");
-    var toForwardOrReverse = (currGear == "E" || currGear == "C");
-    if (neutralOrPark && toForwardOrReverse){
-
-    }
+    // gm.info.getVehicleData(getGearSuccessful, ['gear_automatic']);
+    // var currGear;
+    //
+    // function getGearSuccessful(data) {
+    //     console.log('Gear is: ', data.gear_automatic);
+    //     currGear = data.gear_automatic;
+    // }
+    //
+    //
+    // // if in neutral or park and changed to forward or reverse, give warning
+    // var neutralOrPark = (prev_gear == "D" || prev_gear == "N");
+    // var toForwardOrReverse = (currGear == "E" || currGear == "C");
+    // if (neutralOrPark && toForwardOrReverse){
+    //
+    // }
 }

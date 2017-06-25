@@ -16,33 +16,35 @@ function changePageFocus(page, name) {
     if (name) {
         for (var i = 0; i < users.length; i++) {
             if (users[i].name === name) {
-                currentUser = users[i];
+                currentUserIndex = i;
                 console.log(users[i]);
+                // Reflect selected user settings in UI
+                loadSettings();
             }
         }
     }
 
-    if (page != 'welcome'){
-        if (currentUser.locationMonitoring){
+    if (page !== 'welcome'){
+        if (users[currentUserIndex].locationMonitoring){
             console.log("Monitoring location");
             checkLocation();
         }
-        if (currentUser.speedWarning){
+        if (users[currentUserIndex].speedWarning){
             console.log("Speed warning on");
             checkSpeed();
         }
 
-        if (currentUser.accessiblity){
+        if (users[currentUserIndex].accessibility){
             console.log("accessiblity on");
             // do accessiblity stuff
         }
 
-        if (currentUser.learner){
+        if (users[currentUserIndex].learner){
             console.log("Learner mode on");
             // do learner stuff
-            doorWarning();
+            //doorWarning();
             blinkerReminder();
-            seatBeltWarning();
+            //seatBeltWarning();
         }
     }
 }
@@ -71,3 +73,40 @@ function openTab(tabName, elmnt, color) {
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+
+// Checkbox stuff
+function learnerCheck(){
+    users[currentUserIndex].learner = !users[currentUserIndex].learner;
+    if (users[currentUserIndex].learner) {
+        say("Learner mode on");
+    } else {
+        say("Learner mode off");
+    }
+}
+
+function accessCheck() {
+    users[currentUserIndex].accessibility = !users[currentUserIndex].accessibility;
+    if (users[currentUserIndex].accessibility) {
+        say("Enhanced accessibility on");
+    } else {
+        say("Enhanced accessibility off");
+    }
+}
+
+function speedCheck() {
+    users[currentUserIndex].speedWarning = !users[currentUserIndex].speedWarning;
+    if (users[currentUserIndex].speedWarning) {
+        say("Speed warning on");
+    } else {
+        say("Speed warning off");
+    }
+}
+
+function locationCheck() {
+    users[currentUserIndex].locationMonitoring = !users[currentUserIndex].locationMonitoring;
+    if (users[currentUserIndex].locationMonitoring) {
+        say("Locatoin monitoring on");
+    } else {
+        say("Location monitoring off");
+    }
+}
