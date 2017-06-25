@@ -43,9 +43,11 @@
             <form id="myForm">
                 Name <br />
                 <input type="text" name="name" placeholder="John Doe" /><br />
-                Phone <br /><input type="text" name="phone" placeholder="(647)-915-3689" /><br />
+                Phone <br /><input type="text" name="phone" placeholder="(647)-915-3689"
+            /><br />
                 Address <br />
-                <textarea rows="4" cols="50" name="address" placeholder="44 Devonshire Place, Toronto, ON"></textarea>
+                <textarea rows="1" cols="50" name="address"
+                          placeholder="44 Devonshire Place, Toronto, ON"></textarea>
                 <br />
                 <input type="button" onclick="createUser()" value="Save"/>
                 <input type="button" onclick="changePageFocus('welcome', null)" value="Cancel"/>
@@ -53,7 +55,7 @@
         </div>
 
 
-        <div id="tabs">
+        <div id="tabs" class="tabs">
             <div id="GoHome" class="tabcontent">
                 <h3>Go Home</h3>
                 <img src="images/home.png" alt="Home" onclick="goHome()"/>
