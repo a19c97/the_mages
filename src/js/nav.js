@@ -16,9 +16,11 @@ function changePageFocus(page, name) {
     document.getElementById(currentPage).style.position = 'absolute';
     document.getElementById(currentPage).style.opacity = '0';
     document.getElementById(currentPage).style.transition = '';
+    document.getElementById(currentPage).style.marginTop = '1000px';
     document.getElementById(page).style.position = 'static';
     document.getElementById(page).style.opacity = '1';
     document.getElementById(page).style.transition = 'position 0.25s, opacity 0.25s linear';
+    document.getElementById(page).style.marginTop = '0';
 
     currentPage = page;
     if (name) {

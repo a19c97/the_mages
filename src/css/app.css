@@ -1,11 +1,13 @@
 #welcome {
     text-align: center;
     background-color:rgb(197,215,237);
+    padding: 10px 0px 400px 0px;
 }
 
 #create {
     text-align: center;
     background-color:rgb(197,215,237);
+    padding: 10px 0px 150px 0px;
 }
 
 @media (min-width: 801px) {
