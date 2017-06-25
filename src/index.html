@@ -91,6 +91,10 @@
 					results[i].geometry.location.lng()];
 				}
             if (result.length != undefined){
+	    var myNode = document.getElementById("Results");
+		while (myNode.firstChild) {
+		    myNode.removeChild(myNode.firstChild);
+		}
                 for (i=0; i<result.length; i++) {
                     var newDiv = document.createElement('div');
 
