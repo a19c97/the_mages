@@ -85,17 +85,19 @@
             </div>
 
 
-            <button class="tablink" onclick="openTab('GoHome', this, '22', '96', '186')">Go Home</button>
+            <button class="tablink" id="defaultOpen"
+                    onclick="openTab('GoHome', this, '22', '96', '186')">Go
+                Home</button>
             <button class="tablink" onclick="openTab('Map', this, '176', '63', '84')">Map</button>
             <button class="tablink" onclick="openTab('Settings', this, '98', '34', '135')">Settings</button>
-            <button class="tablink" onclick="changePageFocus('welcome', null)" id="defaultOpen">Log Out</button>
+            <button class="tablink" onclick="changePageFocus('welcome', null)">Log Out</button>
         </div>
 
         <!-- App code: -->
         <script src="js/nav.js"></script>
         <script src="js/functions.js"></script>
+        <script src="js/home.js"></script>
         <script src="js/app.js"></script>
-            <script src="js/home.js"></script>
 
         <!-- Google map -->
         <script async defer
