@@ -2,7 +2,7 @@
 
 // Initial page
 var currentPage = 'welcome';
-var currentUser = {};
+var currentUserIndex = 0;
 var USER_PIC_URLS = [
     'greengithubcat.png',
     'githubcat.png',
@@ -14,7 +14,5 @@ var USER_PIC_URLS = [
 var users = [];
 // location
 var prevTime = 0;
-
-var userCreated = false;
 
 initializeUI();

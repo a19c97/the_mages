@@ -1,15 +1,26 @@
 #welcome {
     text-align: center;
+    background-color:rgb(197,215,237);
 }
 
 #create {
     text-align: center;
+    background-color:rgb(197,215,237);
 }
 
 @media (min-width: 801px) {
     #close {
         top: 104px;
     }
+}
+
+#userInfo {
+    margin: 0px 0px 8px 0px;
+    padding: 0px;
+}
+
+body {
+    overflow: hidden;
 }
 
 .user {
@@ -69,3 +80,15 @@ fieldset {
 .map {
     margin-top: 0px;
 }
+
+.block {
+    display: inline-block;
+    width: 100px;
+    margin-top: 0px;
+    padding-left: 7px;
+    padding-right: 7px;
+    vertical-align: top;
+}
+
+.big-font {font-size: 22px;}
+

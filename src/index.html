@@ -87,15 +87,15 @@
 				});
 			}
 		
-		var result;
+		var result = 0;
 		function init(type = 'Food', lat = 42.32877027777778, lon = -83.03956861111111) {
 			var loc = {lat: lat, lng: lon};
-			
+
 			map = new google.maps.Map(document.getElementById('map'), {
 				center: loc,
 				zoom: 15
 			});
-			
+
 			infowindow = new google.maps.InfoWindow();
 			var service = new google.maps.places.PlacesService(map);
 			service.nearbySearch({
@@ -103,12 +103,42 @@
 				radius: 1000,
 				type: [type]
 			}, callback);
+
+            if (result.length != undefined){
+                for (i=0; i<result.length; i++) {
+                    var newDiv = document.createElement('div');
+
+                    var newIcon = document.createElement('img');
+
+    				if (type == 'Food') {
+    				 newIcon.src = "images/takeoutsmall.png";
+    				 } else if (type == 'ATM') {
+    				 newIcon.src = "images/atmsmall.png";
+    				 } else if (type == 'Repair') {
+    				 newIcon.src = "images/repairsmall.png";
+    				 } else if (type == 'Gas station') {
+    				 newIcon.src = "images/speedometersmaller.png";
+    				 }
+
+    				 newIcon.onclick = selectIcon();
+
+                    newDiv.appendChild(newIcon);
+                    newDiv.classList.add("block");
+
+                    var newTitle = document.createElement('p');
+                    newTitle.innerHTML = result[i][0];
+                    newDiv.appendChild(newTitle);
+
+                    var parent = document.getElementById('Results');
+                    parent.appendChild(newDiv);
+                }
+            }
 			return result;
 		}
-		
+
 		function callback(results, status) {
 			if (status === google.maps.places.PlacesServiceStatus.OK) {
-				result = new Array(Math.min(results.length, 10));
+				result = new Array(Math.min(results.length, 6));
 				for (var i = 0; i < result.length; i++) {
 					result[i] = [results[i].name,
 					results[i].geometry.location.lat(),
@@ -118,18 +148,25 @@
 				result = [];
 			}
 		}
+
 		</script>
 	</head>
 	<body>
+<<<<<<< HEAD
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD87r7QWRb85HhxmVIxzwTx0SO2uY5Y0tM&libraries=places&callback=mapInit"></script>
 		<div id="welcome">
 			<h1>Welcome</h1>
 			<p>Select or create a user below:</p>
+=======
+		<div id="welcome" class="welcome">
+			<h1 class="welcomeHeader">Welcome</h1>
+			<p class="welcomeInstructions">Select or create a user below:</p>
+>>>>>>> 7a56e68207923f89aa82f6fd99f96908329c8dd9
 
-			<div id="users">
+			<div id="users" class="users">
 			</div>
 
-			<div>
+			<div class="addUser">
 				<img src="images/adduser.png"
 					 alt="Add user"
 					 onclick="changePageFocus('create', null)"/>
@@ -140,7 +177,7 @@
 
 		<div id="create">
 			<h1>Create a User</h1>
-			<form id="myForm">
+			<form id="createForm">
 				Name <br />
 				<input type="text" name="name" placeholder="John Doe" /><br />
 				Phone <br /><input type="text" name="phone" placeholder="(647)-915-3689"/><br />
@@ -148,7 +185,7 @@
 				<textarea rows="1" cols="50" name="address"
 						  placeholder="341 Yonge Street, Toronto, ON M5B 1S1"></textarea><br />
 				<br />
-				<input type="button" onclick="createUser()" value="Save"/>
+				<input type="button" onclick="createUser()" value="Create"/>
 				<input type="button" onclick="changePageFocus('welcome', null)" value="Cancel"/>
 			</form>
 		</div>
@@ -157,25 +194,20 @@
 		<div id="tabs" class="tabs">
 			<div id="GoHome" class="tabcontent">
 				<h3>Go Home</h3>
-				<img src="images/home.png" alt="Home" onclick="goHome(currentUser.address)"/>
+				<img src="images/home.png" alt="Home" onclick="goHome(users[currentUserIndex].address)" height="200" width="200" />
 			</div>
 
 			<div id="FavPlaces" class="tabcontent">
 				<h3>Favourite Places</h3>
-				<img src="images/takeoutbig.png" alt="Food" hspace="10"
-					 onclick="getPOI('Food', 'FavSub', this, 'rgb(176, 63, 84')" height="100px" width="100px"/>
-				<img src="images/atmbig.png" alt="ATM" hspace="10" onclick="getPOI('ATM', 'FavSub', this, 'rgb(176, 63, 84')"
-					 height="100px" width="100px"/>
-				<img src="images/repairbig.png" alt="Repair" hspace="10"
-					 onclick="getPOI('Hospital', 'FavSub', this, 'rgb(176, 63, 84')"
-					 height="100px" width="100px"/>
-				<img src="images/speedometerbigger.png" alt="Gas stations" hspace="10"
-					 onclick="getPOI('Gas stations', 'FavSub', this, 'rgb(176, 63, 84')"
-					 height="100px" width="100px"/>
+				<img src="images/takeoutbig.png" alt="Food" hspace="10" onclick="getPOI('Food', 'FavSub', this, 'rgb(176, 63, 84)')" height="100px" width="100px" />
+				<img src="images/atmbig.png" alt="ATM" hspace="10" onclick="getPOI('ATM', 'FavSub', this, 'rgb(176, 63, 84)')" height="100px" width="100px"/>
+				<img src="images/repairbig.png" alt="Repair" hspace="10" onclick="getPOI('Repair', 'FavSub', this, 'rgb(176, 63, 84)')" height="100px" width="100px"/>
+				<img src="images/speedometerbigger.png" alt="Gas stations" hspace="10" onclick="getPOI('Gas station', 'FavSub', this, 'rgb(176, 63, 84)')" height="100px" width="100px"/>
 			</div>
 
 			<div id="FavSub" class="tabcontent">
 				<h3>Results</h3>
+				<div id="Results" style="display: inline-block"></div>
 			</div>
 
 			<div id="Map" class="tabcontent">
@@ -185,22 +217,21 @@
 			<div id="Settings" class="tabcontent">
 				<h3>Settings</h3>
 				<form>
-					<fieldset>
-						<legend>Please select features</legend>
-						<input type="checkbox" name="feature" value="Speed tracking"/> Speed tracking <br/>
-						<input type="checkbox" name="feature" value="Location tracking"/> Location tracking <br/>
-						<input type="checkbox" name="feature" value="Learner"/> Learner <br/>
-						<input type="checkbox" name="feature" value="Enhanced Accessibility"/> Enhanced Accessibility <br/>
-						<br/>
-						<input type="button" value="Save"/>
 
+                    <fieldset id="settingsForm">
+                        <p id="userInfo"></p>
+						<legend>Please select features</legend>
+						<input type="checkbox" name="speedWarning" onclick="speedCheck()"/> Speed warning <br/>
+						<input type="checkbox" name="locationMonitoring" onclick="locationCheck()"/> Location monitoring <br/>
+						<input type="checkbox" name="learner" onclick="learnerCheck()"/> Learner mode<br/>
+						<input type="checkbox" name="accessibility" onclick="accessCheck()"/> Enhanced accessibility <br/>
+						<br/><br/>
 					</fieldset>
 				</form>
 			</div>
 
 			<div id="LogOut" class="tabcontent">
 			</div>
-
 
 			<button class="tablink" onclick="openTab('GoHome', this, 'rgb(22,96,186)')">Go Home</button>
 			<button class="tablink" id="defaultOpen" onclick="openTab('FavPlaces', this, 'rgb(176,63,84)')">

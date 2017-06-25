@@ -1,13 +1,37 @@
-function getPOI(type, tabName, elmnt, color) {
+var result;
+
+function getPOI(type) {
+	var xhr = new XMLHttpRequest();
 	var lat;
 	var lon;
-	gm.info.getCurrentPosition(processPosition, true)
-	
-	function processPosition(position){
-		lat = position.coords.latitude;
-		lon = position.coords.longitude;
+	gm.info.getVehicleData(setCoords, ['gps_lat', 'gps_long'])
+
+	function setCoords(data) {
+		lat = data.gps_lat
+		lon = data.gps_long
 	}
 
-	openTab(tabName, elmnt, color);
-	return init(type, lat, lon);
+	xhr.open('GET', 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + ',' + lon + '&radius=1000&type=' + type + '&key=AIzaSyDBo-j489qE4Ea7UOkJvCMD_SJnlt2xfXs');
+	var r
+	xhr.addEventListener('load', assignResult);
+
+	function assignResult() {
+		r = JSON.parse(xhr.responseText);
+	}
+
+	xhr.send(null);
+
+	result = new Array(Math.min(r.results.length, 10));
+
+	for (var i = 0; i < result.length; i++) {
+		result[i] = r.results[i].name;
+	}
+
+	return result;
+}
+
+function modifyWeight() {
+	for (var i = 0; i < result.length; i++) {
+		console.log(result[i]);
+	}
 }
