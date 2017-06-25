@@ -32,7 +32,7 @@
 			var map, directionsDisplay, directionsService;
 			function mapInit() {
 				map = new google.maps.Map(document.getElementById('google-render-map'), {
-					zoom: 16,
+					zoom: 10,
 					center: {
 						lat: 43.6577261,
 						lng: -79.3810225
@@ -203,11 +203,10 @@
 
 
 			<button class="tablink" onclick="openTab('GoHome', this, 'rgb(22,96,186)')">Go Home</button>
-			<button class="tablink" id="defaultOpen"
-					onclick="openTab('FavPlaces', this, 'rgb(176,63,84)')">
+			<button class="tablink" id="defaultOpen" onclick="openTab('FavPlaces', this, 'rgb(176,63,84)')">
 				Favourite Places
 			</button>
-			<button class="tablink" onclick="mapUpdate(this)">Map</button>
+			<button class="tablink" id="mapButton" onclick="mapUpdate(this)">Map</button>
 			<button class="tablink" onclick="openTab('Settings', this, 'rgb(98,34,135)')">Settings</button>
 			<button class="tablink" onclick="changePageFocus('welcome', null)">Log Out</button>
 		</div>
