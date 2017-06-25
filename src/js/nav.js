@@ -34,7 +34,7 @@ function changePageFocus(page, name) {
         }
     }
 
-    if (page !== 'welcome'){
+    if (page !== 'welcome' && page != 'create'){
         runSettings();
     }
 }
