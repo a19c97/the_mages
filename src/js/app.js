@@ -5,15 +5,17 @@ var currentPage = 'welcome';
 var currentUser = {};
 // Array of users
 var users = [];
+// location
+var prevTime = 0;
 
 initializeUI();
 
-checkSpeed();
+//checkSpeed();
+checkLocation();
 
 function checkSpeed(){
     console.log("Running checkSpeed");
     var speedLimit = 80;
-    //gm.info.getVehicleData(getSpeedSuccess, ['average_speed']);
     var id = gm.info.watchVehicleData(getSpeedSuccess, ['average_speed']);
 
     function getSpeedSuccess(data) {
@@ -23,4 +25,24 @@ function checkSpeed(){
             resetWarning(data.average_speed);
         }
     }
+}
+
+function checkLocation(){
+    var id = gm.info.watchPosition(processPosition, true);
+    var thres = 10;
+
+    function processPosition(position){
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        console.log("lat: " + lat + "lon: " + lon);
+
+        var currTime = Date.now();
+
+        if(currTime - prevTime > 10000){
+            console.log("Wow we've moved a lot");
+            prevTime = currTime;
+            sendLocation(lon, lat);
+        }
+    }
+
 }
