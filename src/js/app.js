@@ -8,7 +8,8 @@ var USER_PIC_URLS = [
     'githubcat.png',
     'purplegithubcat.png',
     'redgithubcat.png',
-    'bluegithubcat.png'];
+    'bluegithubcat.png'
+];
 // Array of users
 var users = [];
 // location
