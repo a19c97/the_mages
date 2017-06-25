@@ -327,9 +327,6 @@ function seatBeltWarning() {
         if (passenger_present == 1 && passenger_seatbelt_fastened == 0){
             say("Shotgun, put on your seatbelt!");
         }
-        if (passenger_present == 0 && passenger_seatbelt_fastened == 1){
-            say("Kid you have a ghost riding shotgun");
-        }
     }
 }
 
