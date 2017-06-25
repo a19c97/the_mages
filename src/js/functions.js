@@ -25,7 +25,7 @@ function createUser() {
     var newDiv = document.createElement('div');
 
     var newIcon = document.createElement('img');
-    newIcon.src = "images/user.png";
+    newIcon.src = "images/" + USER_PIC_URLS[users.length % USER_PIC_URLS.length];
     newIcon.alt = name;
     newIcon.onclick = function() {
         changePageFocus('tabs', name);
@@ -40,7 +40,7 @@ function createUser() {
     newDiv.classList.add("user");
 
     var parent = document.getElementById('welcome').children[2];
-    parent.insertBefore(newDiv, parent.firstChild);
+    parent.appendChild(newDiv);
     changePageFocus('welcome', null);
     userCreated = true;
 }
