@@ -41,9 +41,14 @@
         <div id="create">
             <h1>Create a User</h1>
             <form id="myForm">
-                Name <input type="text" name="name" placeholder="John Doe" /><br /><br />
-                <input type="button" onclick="changePageFocus('welcome', null)" value="Cancel"/>
+                Name <br />
+                <input type="text" name="name" placeholder="John Doe" /><br />
+                Address <br />
+                <input type="text" name="address" placeholder="44 Devonshire Place, Toronto, ON" /><br />
+                Phone <br /><input type="text" name="phone" placeholder="(647)-915-3689" /><br />
+                <br />
                 <input type="button" onclick="createUser()" value="Save"/>
+                <input type="button" onclick="changePageFocus('welcome', null)" value="Cancel"/>
             </form>
         </div>
 
