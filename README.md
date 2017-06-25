@@ -3,29 +3,47 @@
 ## The Challenge
 The accelerating progress in autonomous vehicle development forces us to reconsider the traditional interaction between car and passenger.  *Dude, Where's My Car?* reshapes this relationship by providing a personal touch to the driving experience.  Our app creates an enjoyable and convenient ride for passengers while fostering enhanced safety features.
 
-## What It Does
-*Dude, Where's My Car?* allows passengers to personalize exclusive features to better fit their needs.
 
-## Features
 
-Vehicle users create individual accounts to view and store their preferences.  
+## Main Features
+
+Vehicle users create individual accounts to view and store their tailored preferences that toggle specific app functions.
 
 <p align="center"> <img src="https://github.com/christinekc/the_mages/blob/master/src/images/LogIn.png" width=75%> </p>
 
-Features include a home button, the ability to search for places of interest, a map, and various personalizable settings.  We additionally introduce the following technological advances:
+### 1. Go Home
 
-### Safety
-- **Enhanced Accessibility** offers a large home button icon to autonomously drive passengers, such as the elderly, home.
+- The uniquely designed **Go Home** button automatically directs the user home through Google Maps. In fully autonomous cars, this function has the potential of transporting the user home safely with utmost convenience.
 
 <p align="center"> <img src="https://github.com/christinekc/the_mages/blob/master/src/images/HomeTab.png" width=50%> </p>
 
-- **Learner Mode** provides safety assistance to beginning drivers such as speed monitoring, seatbelt reminders, and blinker usage.
-- **Car-Phone Communication** allows family members to locate their car via text message.  In conjunction with Learner Mode, this system can also message parents when their teen is steadily speeding.
+### 2. Points of Interests
 
-### Entertainment
-- **Favorite Places** searches for food, ATMs, car repair shops, and gas stations near your location and remembers places you have previously visited.
+- Each user can store personalized **Points of Interest**, ranging from restaurants to ATMs, and 
+gas stations to homes of friends.
 
 <p align="center"> <img src="https://github.com/christinekc/the_mages/blob/master/src/images/FavPlaces.png" width = 50%> </p>
+
+## Addressing Demographics
+
+Our app's functionality is tailored to other kinds of users.
+
+### 1. Teenagers
+
+- The **Speed Warning** function allows the car to send text messages to a specified phone number if the car is exceeding the current road's speed limit as dictated by Google Maps.
+
+- The **Location Monitoring** option allows the car the text its geographical position to a 
+specified phone number over intervals of time.
+
+### 2. The Elderly
+
+- **Enhanced Accessibility** alters the user interface to better fit visual needs.
+
+### 3. Learners
+
+- **Learner Mode** provides safety assistance to beginning drivers such as speed monitoring, 
+seat belt reminders, and blinker usage, which is done through keeping track of the various 
+turning and signal behaviours of the car.
 
 ## Authors
 - Asic Chen
