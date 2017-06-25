@@ -63,15 +63,16 @@
 			}
 					
 		var result = 0;
+		var theType;
 		function init(type = 'Food', lat = 42.32877027777778, lon = -83.03956861111111) {
 			var loc = {lat: lat, lng: lon};
+			theType = type;
 
-			map = new google.maps.Map(document.getElementById('map'), {
+			map = new google.maps.Map(document.getElementById('Map'), {
 				center: loc,
 				zoom: 15
 			});
 
-			infowindow = new google.maps.InfoWindow();
 			var service = new google.maps.places.PlacesService(map);
 			service.nearbySearch({
 				location: loc,
@@ -79,19 +80,29 @@
 				type: [type]
 			}, callback);
 
+		}
+
+		function callback(results, status) {
+			if (status === google.maps.places.PlacesServiceStatus.OK) {
+				result = new Array(Math.min(results.length, 6));
+				for (var i = 0; i < result.length; i++) {
+					result[i] = [results[i].name,
+					results[i].geometry.location.lat(),
+					results[i].geometry.location.lng()];
+				}
             if (result.length != undefined){
                 for (i=0; i<result.length; i++) {
                     var newDiv = document.createElement('div');
 
                     var newIcon = document.createElement('img');
 
-    				if (type == 'Food') {
+    				if (theType == 'Food') {
     				 newIcon.src = "images/takeoutsmall.png";
-    				 } else if (type == 'ATM') {
+    				 } else if (theType == 'ATM') {
     				 newIcon.src = "images/atmsmall.png";
-    				 } else if (type == 'Repair') {
+    				 } else if (theType == 'Repair') {
     				 newIcon.src = "images/repairsmall.png";
-    				 } else if (type == 'Gas station') {
+    				 } else if (theType == 'Gas station') {
     				 newIcon.src = "images/speedometersmaller.png";
     				 }
 
@@ -108,17 +119,6 @@
                     parent.appendChild(newDiv);
                 }
             }
-			return result;
-		}
-
-		function callback(results, status) {
-			if (status === google.maps.places.PlacesServiceStatus.OK) {
-				result = new Array(Math.min(results.length, 6));
-				for (var i = 0; i < result.length; i++) {
-					result[i] = [results[i].name,
-					results[i].geometry.location.lat(),
-					results[i].geometry.location.lng()];
-				}
 			} else {
 				result = [];
 			}
