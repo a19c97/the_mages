@@ -119,6 +119,17 @@ function sendLocation(lon, lat) {
     xhttp.send("lon=" + lon + "&" + "lat=" + lat);
 }
 
+// My Maps
+
+/* Find locations around me */
+function findLocations(radius) {
+
+}
+
+function modifyWeight() {
+
+}
+
 function myMap() {
     var mapOptions = {
         center: new google.maps.LatLng(51.5, -0.12),
