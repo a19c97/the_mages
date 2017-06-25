@@ -25,28 +25,35 @@ function changePageFocus(page, name) {
     }
 
     if (page !== 'welcome'){
-        if (users[currentUserIndex].locationMonitoring){
-            console.log("Monitoring location");
-            checkLocation();
-        }
-        if (users[currentUserIndex].speedWarning){
-            console.log("Speed warning on");
-            checkSpeed();
-        }
-
-        if (users[currentUserIndex].accessibility){
-            console.log("accessiblity on");
-            // do accessiblity stuff
-        }
-
-        if (users[currentUserIndex].learner){
-            console.log("Learner mode on");
-            // do learner stuff
-            //doorWarning();
-            blinkerReminder();
-            //seatBeltWarning();
-        }
+        runSettings();
     }
+}
+
+
+function runSettings() {
+    console.log("Running settings");
+
+    if (users[currentUserIndex].locationMonitoring){
+        console.log("Monitoring location");
+        checkLocation();
+    }
+    if (users[currentUserIndex].speedWarning){
+        console.log("Speed warning on");
+        checkSpeed();
+    }
+
+    if (users[currentUserIndex].accessibility){
+        console.log("accessiblity on");
+        // do accessiblity stuff
+    }
+
+    if (users[currentUserIndex].learner){
+        console.log("Learner mode on");
+        doorWarning();
+        blinkerReminder();
+        seatBeltWarning();
+    }
+
 }
 
 function openTab(tabName, elmnt, color) {
@@ -82,6 +89,7 @@ function learnerCheck(){
     } else {
         say("Learner mode off");
     }
+    runSettings();
 }
 
 function accessCheck() {
@@ -91,6 +99,7 @@ function accessCheck() {
     } else {
         say("Enhanced accessibility off");
     }
+    runSettings();
 }
 
 function speedCheck() {
@@ -100,13 +109,15 @@ function speedCheck() {
     } else {
         say("Speed warning off");
     }
+    runSettings();
 }
 
 function locationCheck() {
     users[currentUserIndex].locationMonitoring = !users[currentUserIndex].locationMonitoring;
     if (users[currentUserIndex].locationMonitoring) {
-        say("Locatoin monitoring on");
+        say("Location monitoring on");
     } else {
         say("Location monitoring off");
     }
+    runSettings();
 }
