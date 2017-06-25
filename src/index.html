@@ -23,7 +23,7 @@
 		<!-- <script src="GMLIB/util.js"></script> -->
 		<script src="GMLIB/voice.js"></script>
 		<script>
-<<<<<<< HEAD
+
 		var result;
 		function init(type = 'Food', lat = 42.32877027777778, lon = -83.03956861111111) {
 			var loc = {lat: lat, lng: lon};
@@ -94,40 +94,7 @@
 				result = [];
 			}
 		}
-=======
-			// Why is this here???
-            var result;
-            function init(type = 'Food', lat = 42.32877027777778, lon = -83.03956861111111) {
-                var loc = {lat: lat, lng: lon};
 
-                map = new google.maps.Map(document.getElementById('map'), {
-                    center: loc,
-                    zoom: 15
-                });
-
-                infowindow = new google.maps.InfoWindow();
-                var service = new google.maps.places.PlacesService(map);
-                service.nearbySearch({
-                    location: loc,
-                    radius: 1000,
-                    type: [type]
-                }, callback);
-                return result;
-            }
-
-            function callback(results, status) {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    result = new Array(Math.min(results.length, 10));
-                    for (var i = 0; i < result.length; i++) {
-                        result[i] = [results[i].name,
-                        results[i].geometry.location.lat(),
-                        results[i].geometry.location.lng()];
-                    }
-                } else {
-                    result = [];
-                }
-            }
->>>>>>> 19272b7443a4d30abf4173f5343334e9bed0c79e
 		</script>
 	</head>
 	<body>
