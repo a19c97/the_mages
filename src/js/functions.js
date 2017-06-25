@@ -178,7 +178,7 @@ function myMap() {
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }
 
-var speedId;
+var speedId = 0;
 
 function checkSpeed(){
     console.log("Running checkSpeed");
@@ -195,10 +195,13 @@ function checkSpeed(){
 }
 
 function stopSpeed() {
-    gm.info.clearVehicleData(speedId);
+    if (speedId != 0){
+        gm.info.clearVehicleData(speedId);
+        speedId = 0;
+    }
 }
 
-var locationId;
+var locationId = 0;
 
 function checkLocation(){
 
@@ -221,7 +224,10 @@ function checkLocation(){
 }
 
 function stopLocation() {
-    gm.info.clearVehicleData(locationId);
+    if (locationId != 0){
+        gm.info.clearVehicleData(locationId);
+        locationId = 0;
+    }
 }
 
 // Learner stuff
@@ -229,7 +235,7 @@ function stopLocation() {
 /* Blinker */
 var prev_yaw_rate = 0;
 var yaw_rate = 0;
-var yawId;
+var yawId = 0;
 
 function blinkerReminder() {
 
@@ -262,13 +268,16 @@ function blinkerReminder() {
 }
 
 function stopBlinker() {
-    gm.info.clearVehicleData(yawId);
-    yaw_rate = 0;
+    if (yawId != 0){
+        gm.info.clearVehicleData(yawId);
+        yaw_rate = 0;
+        yawId = 0;
+    }
 }
 
 /* Seat belt */
-var seatbeltId;
-var passengerId;
+var seatbeltId = 0;
+var passengerId = 0;
 
 function seatBeltWarning() {
     var passenger_present = 0;
@@ -302,8 +311,12 @@ function seatBeltWarning() {
 }
 
 function stopSeatbelt() {
-    gm.info.clearVehicleData(seatbeltId);
-    gm.info.clearVehicleData(passengerId);
+    if (seatbeltId != 0 || passengerId != 0) {
+        gm.info.clearVehicleData(seatbeltId);
+        gm.info.clearVehicleData(passengerId);
+        seatbeltId = 0;
+        passengerId = 0;
+    }
 }
 
 var prev_gear = "F";
