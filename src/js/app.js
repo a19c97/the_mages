@@ -45,5 +45,4 @@ function checkLocation(){
             sendLocation(lon, lat);
         }
     }
-
 }

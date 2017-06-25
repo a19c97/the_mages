@@ -6,6 +6,9 @@ function initializeUI() {
     document.getElementById('welcome').style.display = "inline";
 }
 
+/**
+ * Changes the main page in focus. For changing to tabs, name must be a string, otherwise null.
+ */
 function changePageFocus(page, name) {
     document.getElementById(currentPage).style.display = "none";
     document.getElementById(page).style.display = "inline";
