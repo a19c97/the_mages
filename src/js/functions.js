@@ -18,8 +18,7 @@ function createUser() {
         learner: false,
         locationMonitoring: false,
         preferences: {},
-        speedWarning: false,
-        speedLimit: 100
+        speedWarning: false
     });
 
     form.elements['name'].value = '';
@@ -48,11 +47,10 @@ function createUser() {
     parent.appendChild(newDiv);
 
     var settingsForm = document.getElementById('settingsForm');
-    settingsForm.elements['accessibility'].checked = true;
-    settingsForm.elements['learner'].checked = true;
-    settingsForm.elements['locationMonitoring'].checked = true;
-    settingsForm.elements['speedWarning'].checked = true;
-    settingsForm.elements['speedLimit'].value = 100;
+    settingsForm.elements['accessibility'].checked = false;
+    settingsForm.elements['learner'].checked = false;
+    settingsForm.elements['locationMonitoring'].checked = false;
+    settingsForm.elements['speedWarning'].checked = false;
 
     // Set info text
     document.getElementById('userInfo').innerHTML = name + ' - ' + phone + ' - ' + address;
