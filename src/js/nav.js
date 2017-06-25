@@ -15,7 +15,7 @@ function changePageFocus(page, name) {
     }
 }
 
-function openTab(tabName, elmnt, color) {
+function openTab(tabName, elmnt, r, g, b) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -33,7 +33,7 @@ function openTab(tabName, elmnt, color) {
     document.getElementById(tabName).style.display = "block";
 
     // Add the specific color to the button used to open the tab content
-    elmnt.style.backgroundColor = color;
+    elmnt.style.backgroundColor = "rgb\(" + r + "," + g + "," + b + "\)";
 }
 
 // Get the element with id="defaultOpen" and click on it
