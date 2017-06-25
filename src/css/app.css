@@ -12,6 +12,10 @@
   }
 }
 
+.user {
+  padding: 4px 10px;
+}
+
 /* Style the tab buttons */
 .tablink {
   background-color: #555;

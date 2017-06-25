@@ -26,11 +26,11 @@
 
     </head>
     <body>
-        <div id="welcome" style="background-color: deepskyblue;">
+        <div id="welcome">
             <h1>Welcome</h1>
             <p>Select or create a user below</p>
 
-            <div>
+            <div id="users">
                 <img src="images/adduser.png"
                      alt="Add user"
                      onclick="changePageFocus('create')"
@@ -41,12 +41,14 @@
             <button onclick="changePageFocus('tabs')">Go to tabs</button>
         </div>
 
+
         <div id="create">
             <h1>Create a User</h1>
             <form>
                 <fieldset>
                     Name <input type="text" name="detail" placeholder="John Doe" /><br /><br />
-                    <input type="button" value="Save" />
+                    <input type="button" onclick="changePageFocus('welcome')" value="Cancel"/>
+                    <input type="button" onclick="createUser('fred')" value="Save"/>
                 </fieldset>
             </form>
         </div>

@@ -11,6 +11,14 @@ function createUser(name) {
         accessibility: true,
         volume: 0.5
     });
+
+    var newIcon = document.createElement('img');
+    newIcon.src = "images/user.png";
+    newIcon.alt = name;
+    newIcon.classList.add("user");
+    newIcon.onclick = "changePageFocus('welcome')";
+    var parent = document.getElementById('welcome').children[2];
+    parent.insertBefore(newIcon, parent.firstChild);
 }
 
 // Speed functions
