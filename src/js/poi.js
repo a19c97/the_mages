@@ -2,13 +2,13 @@ function getPOI(type, tabName, elmnt, r, g, b) {
 	var xhr = new XMLHttpRequest();
 	var lat;
 	var lon;
-	gm.info.getVehicleData(setCoords, ['gps_lat', 'gps_long'])
-
-    openTab(tabName, elmnt, r, g, b);
-
+	gm.info.getCurrentPosition(setCoords)
+	
+	openTab(tabName, elmnt, r, g, b);
+	
 	function setCoords(data) {
-		lat = data.gps_lat
-		lon = data.gps_long
+		lat = data.coords.latitude;
+		lon = data.coords.longitude;
 	}
 	
 	xhr.open('GET', 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + ',' + lon + '&radius=1000&type=' + type + '&key=AIzaSyDBo-j489qE4Ea7UOkJvCMD_SJnlt2xfXs');
