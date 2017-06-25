@@ -103,6 +103,10 @@ function sendSpeedingText(speed) {
 
 // Location data
 /* Send location data */
-function sendLocation() {
-
+function sendLocation(lon, lat) {
+    console.log("Location has changed!");
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "https://32891a36.ngrok.io", true);
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhttp.send("lon=" + lon + "&" + "lat=" + lat);
 }
