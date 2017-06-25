@@ -63,6 +63,10 @@
                 <img src="images/home.png" alt="Home" onclick="goHome(currentUser.address)"/>
             </div>
 
+            <div id="Map" class="tabcontent">
+                <h3>Map</h3>
+            </div>
+
             <div id="FavPlaces" class="tabcontent">
                 <h3>Favourite Places</h3>
             </div>
@@ -87,11 +91,10 @@
             </div>
 
 
-            <button class="tablink"
-                    onclick="openTab('GoHome', this, '22', '96', '186')">Go
-                Home</button>
             <button class="tablink" id="defaultOpen"
-                    onclick="openTab('FavPlaces', this, '176', '63', '84')">Favourite Places</button>
+                    onclick="openTab('GoHome', this, '22', '96', '186')">Go Home</button>
+            <button class="tablink" onclick="openTab('FavPlaces', this, '176', '63', '84')">Favourite Places</button>
+            <button class="tablink" onclick="openTab('Map', this, '176', '63', '84')">Map</button>
             <button class="tablink" onclick="openTab('Settings', this, '98', '34', '135')">Settings</button>
             <button class="tablink" onclick="changePageFocus('welcome', null)">Log Out</button>
         </div>
