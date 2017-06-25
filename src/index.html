@@ -55,8 +55,7 @@
             </div>
 
             <div id="Map" class="tabcontent">
-                <h3>Map</h3>
-                <p>Map is the capital of France.</p>
+                <div id="map" class="map" style="width:300px;height:300px"></div>
             </div>
 
             <div id="Settings" class="tabcontent">
@@ -64,11 +63,10 @@
                 <form>
                     <fieldset>
                         <legend>Please select features</legend>
-                        <input type="checkbox" name="feature" value="LogOut" /> Log Out <br />
-                        <input type="checkbox" name="feature" value="Map" /> Map <br />
+                        <input type="checkbox" name="feature" value="Speed tracking" /> Speed tracking <br />
+                        <input type="checkbox" name="feature" value="Location tracking" /> Location tracking <br />
                         <input type="checkbox" name="feature" value="Learner" />  Learner <br />
                         <input type="checkbox" name="feature" value="Enhanced Accessibility" />  Enhanced Accessibility <br />
-                        Volume <br /><input type="range" min="0" max="1" value="0.25" step="0.05"><br />
                         <input type="button" value="Save" />
                     </fieldset>
                 </form>
@@ -91,5 +89,10 @@
         <script src="js/functions.js"></script>
         <script src="js/app.js"></script>
         <script src="js/home.js"></script>
+
+        <!-- Google map -->
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1GH73IxTrRZTnYrp1NRHyqaWG5hSohW8&callback=myMap">
+        </script>
     </body>
 </html>
