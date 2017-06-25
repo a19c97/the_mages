@@ -25,7 +25,7 @@ function createUser() {
     var newIcon = document.createElement('img');
     newIcon.src = "images/user.png";
     newIcon.alt = name;
-    newIcon.classList.add("user", name);
+    newIcon.classList.add("user");
     newIcon.onclick = function() {
         changePageFocus('tabs', name);
     };
