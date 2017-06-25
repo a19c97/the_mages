@@ -1,17 +1,34 @@
 /* JS navigation code */
 
 function initializeUI() {
+    document.getElementById('tabs').style.position = 'absolute';
+    document.getElementById('tabs').style.opacity = '0';
+    document.getElementById('create').style.position = 'absolute';
+    document.getElementById('create').style.opacity = '0';
+    document.getElementById('welcome').style.position = 'static';
+    document.getElementById('welcome').style.opacity = '1';
+    /*
     document.getElementById('tabs').style.display = "none";
     document.getElementById('create').style.display = "none";
     document.getElementById('welcome').style.display = "inline";
+    */
 }
 
 /**
  * Changes the main page in focus. For changing to tabs, name must be a string, otherwise null.
  */
 function changePageFocus(page, name) {
+    document.getElementById(currentPage).style.position = 'absolute';
+    document.getElementById(currentPage).style.opacity = '0';
+    document.getElementById(currentPage).style.transition = '';
+    document.getElementById(page).style.position = 'static';
+    document.getElementById(page).style.opacity = '1';
+    document.getElementById(page).style.transition = 'position 0.25s, opacity 0.25s linear';
+
+    /*
     document.getElementById(currentPage).style.display = "none";
     document.getElementById(page).style.display = "inline";
+    */
     currentPage = page;
     if (name) {
         for (var i = 0; i < users.length; i++) {
