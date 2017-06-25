@@ -110,3 +110,14 @@ function sendLocation(lon, lat) {
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhttp.send("lon=" + lon + "&" + "lat=" + lat);
 }
+
+// My Maps
+
+/* Find locations around me */
+function findLocations(radius) {
+
+}
+
+function modifyWeight() {
+
+}
