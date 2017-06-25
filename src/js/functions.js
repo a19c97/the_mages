@@ -1,21 +1,24 @@
 // App JS functions
 
-/* Set the width of the side navigation to 250px */
-function openNav() {
-    document.getElementById("mySidenav").style.width = "200px";
-}
+// User functions
 
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
+function createUser(name) {
+    users.push({
+        name: name,
+        music: true,
+        map: true,
+        learner: true,
+        accessibility: true,
+        volume: 0.5
+    });
 }
-
 
 // Speeding
 var strike = 0;
 var speedingLock = false;
 var textingLock = false;
 var ttsId = 0;
+
 
 /* Speeding warning */
 function speedingWarning(speed) {
@@ -91,17 +94,21 @@ function sendLocation() {
 
 }
 
-/* Set the destination of the car to home */
-function setDestination() {
-	console.log("Set destination to home");
-	// var dest
-	//gm.nav.setDestination(goHomeSuccess, goHomeFailure, dest, true);
+function playAudio() {
+    var music = document.getElementById('audio_player');
+
+    if (music.paused) {
+        music.play();
+        pButton.className = "";
+        pButton.className = "pause";
+    } else {
+        music.pause();
+        pButton.className = "";
+        pButton.className = "play";
+    }
 }
 
-function goHomeSuccess(list) {
-  console.log("Destination has been set");
-}
-
-function goHomeFailure(err) {
-  console.log("Having trouble setting destination");
+function setVolume(volume) {
+    var music = document.getElementById('audio_player');
+    music.volume = volume;
 }

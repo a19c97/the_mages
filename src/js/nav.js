@@ -1,27 +1,18 @@
 /* JS navigation code */
 
 function initializeUI() {
-    for (var i = 0; i < DIVS.length; i++) {
-        if (DIVS[i] !== 'welcome') {
-            document.getElementById(DIVS[i]).style.display = "none";
-        } else {
-            document.getElementById(DIVS[i]).style.display = "inline";
-        }
-    }
+    document.getElementById('tabs').style.display = "none";
+    document.getElementById('create').style.display = "none";
+    document.getElementById('welcome').style.display = "inline";
 }
 
-function setPageFocus(page) {
+function changePageFocus(page) {
     document.getElementById(currentPage).style.display = "none";
-    if (page !== 'welcome') {
-        document.getElementById(page).style.display = "inline";
-        //document.getElementById('tabs').style.display = "inline";
-    } else {
-        document.getElementById('welcome').style.display = "inline";
-        //document.getElementById('tabs').style.display = "none";
-    }
+    document.getElementById(page).style.display = "inline";
+    currentPage = page;
 }
 
-function openTab(cityName, elmnt, color) {
+function openTab(tabName, elmnt, color) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -36,7 +27,7 @@ function openTab(cityName, elmnt, color) {
     }
 
     // Show the specific tab content
-    document.getElementById(cityName).style.display = "block";
+    document.getElementById(tabName).style.display = "block";
 
     // Add the specific color to the button used to open the tab content
     elmnt.style.backgroundColor = color;

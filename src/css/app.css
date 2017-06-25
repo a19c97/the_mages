@@ -2,27 +2,14 @@
   text-align: center;
 }
 
-#close {
-  position: absolute;
-  top: 90px;
-  right: 0;
-  width: 64px;
-  height: 64px;
-  overflow: hidden;
-  z-index: 1000;
-}
-#close img {
-  width: 100%;
+#create {
+  text-align: center;
 }
 
 @media (min-width: 801px) {
   #close {
     top: 104px;
   }
-}
-
-.title {
-  text-align: center;
 }
 
 /* Style the tab buttons */
@@ -54,7 +41,7 @@
 /* Style each tab content individually */
 #Music {background-color:red;}
 #Map {background-color:green;}
-#Tokyo {background-color:blue;}
+#GoHome {background-color:blue;}
 #Settings {background-color:mediumpurple;}
 
 fieldset {
@@ -65,7 +52,6 @@ fieldset {
   padding-bottom: 0.625em;
   padding-left: 0.75em;
   padding-right: 0.75em;
-  border: 2px groove (internal value);
-  text-align: left;
+  border: 2px;
 }
 
