@@ -77,26 +77,7 @@ fieldset {
     left: 300px;
 }
 
-.map {
-    margin-top: 0px;
-}
+.map {margin-top: 0px;}
 
-.big-font {
-    font-size: 22px;
-}
+.big-font {font-size: 22px;}
 
-.user {
-    background-color:rgb(197,215,237);
-}
-
-.welcomeHeader {
-    background-color:rgb(197,215,237);
-}
-
-.welcomeInstructions {
-    background-color:rgb(197,215,237);
-}
-
-.addUser {
-    background-color:rgb(197,215,237);
-}
