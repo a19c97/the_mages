@@ -1,12 +1,12 @@
-function getPOI(type, tabName, elmnt, r, g, b) {
-	/*var xhr = new XMLHttpRequest();
+function getPOI(type, tabName, elmnt, color) {
+	var xhr = new XMLHttpRequest();
 	var lat;
 	var lon;
-	gm.info.getCurrentPosition(setCoords)*/
+	gm.info.getCurrentPosition(setCoords)
 	
-	openTab(tabName, elmnt, r, g, b);
+	openTab(tabName, elmnt, color);
 	
-	/*function setCoords(data) {
+	function setCoords(data) {
 		lat = data.coords.latitude;
 		lon = data.coords.longitude;
 	}
@@ -27,5 +27,5 @@ function getPOI(type, tabName, elmnt, r, g, b) {
 		result[i] = r.results[i].name;
 	}
 
-	return result;*/
+	return result;
 }
