@@ -36,10 +36,15 @@ function runSettings() {
     if (users[currentUserIndex].locationMonitoring){
         console.log("Monitoring location");
         checkLocation();
+    } else {
+        stopLocation();
     }
+
     if (users[currentUserIndex].speedWarning){
         console.log("Speed warning on");
         checkSpeed();
+    } else {
+        stopSpeed();
     }
 
     if (users[currentUserIndex].accessibility){
@@ -54,6 +59,10 @@ function runSettings() {
         doorWarning();
         blinkerReminder();
         seatBeltWarning();
+    } else {
+        stopSeatbelt();
+        stopBlinker();
+        stopDoor();
     }
 
 }
