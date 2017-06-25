@@ -51,7 +51,30 @@ var speedingLock = false;
 var textingLock = false;
 var ttsId = 0;
 
+function mapUpdate(button) {
+	gm.info.getCurrentPosition(setCoords, true);
+	function setCoords(data) {
+		loc = {lat: data.coords.latitude,
+			lng: data.coords.longitude
+		}
+		mapPan(loc);
+		createMarker(loc);
+	}
+	openTab('Map', button, 'rgb(77, 158, 19)');
+	google.maps.event.trigger(map, 'resize');
+}
 
+var marker = null;
+
+function createMarker(place) {
+	if (marker != null) {
+		marker.setMap(null);
+	}
+	marker = new google.maps.Marker({
+		map: map,
+		position: place
+	});
+}
 /* Speeding warning */
 function speedingWarning(speed) {
     // delay

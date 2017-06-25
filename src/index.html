@@ -3,6 +3,12 @@
 	<head>
 		<title>The Mages</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<style>
+			#google-render-map {
+				height: 250px;
+				width: 700px;
+			}
+		</style>
 
 		<!-- Base css, but you'll likely want to keep them -->
 		<link rel="stylesheet" href="css/reset.css" type="text/css">
@@ -23,6 +29,64 @@
 		<!-- <script src="GMLIB/util.js"></script> -->
 		<script src="GMLIB/voice.js"></script>
 		<script>
+			var map, directionsDisplay, directionsService;
+			function mapInit() {
+				map = new google.maps.Map(document.getElementById('google-render-map'), {
+					zoom: 16,
+					center: {
+						lat: 43.6577261,
+						lng: -79.3810225
+					}
+				});
+				google.maps.event.trigger(map, 'resize');
+				directionsDisplay = new google.maps.DirectionsRenderer;
+				directionsService = new google.maps.DirectionsService;
+				directionsDisplay.setMap(map);
+			}
+
+			function mapPan(loc) {
+				map.panTo(loc);
+			}
+
+			function mapGo(from, to) {
+				directionsService.route({
+					origin: from,
+					destination: to,
+					travelMode: google.maps.TravelMode["DRIVING"]
+				}, function(response, status) {
+					if (status == 'OK') {
+						directionsDisplay.setDirections(response);
+					} else {
+						window.alert('Directions request failed due to ' + status);
+					}
+				});
+			}
+					
+
+			function dir(draw = true, route = false, lat1 = -79.3810225, lon1 = -79.3810225, lat2 = -79.3810225, lon2 = -79.3810225) {
+				if (draw) {
+					if (route) {
+						directionsDisplay.setMap(map);
+			
+						calculateAndDisplayRoute(directionsService, directionsDisplay, lat1, lon1, lat2, lon2);
+					}
+				}
+		  	}
+			
+			function calculateAndDisplayRoute(directionsService, directionsDisplay, lat1, lon1, lat2, lon2) {
+				directionsService.route({
+					origin: {lat: lat1, lng: lon1},
+					destination: {lat: lat2, lng: lon2},
+					travelMode: google.maps.TravelMode["DRIVING"]
+				}, function(response, status) {
+					if (status == 'OK') {
+						directionsDisplay.setDirections(response);
+					} else {
+						window.alert('Directions request failed due to ' + status);
+					}
+				});
+			}
+		
 		var result;
 		function init(type = 'Food', lat = 42.32877027777778, lon = -83.03956861111111) {
 			var loc = {lat: lat, lng: lon};
@@ -57,6 +121,7 @@
 		</script>
 	</head>
 	<body>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD87r7QWRb85HhxmVIxzwTx0SO2uY5Y0tM&libraries=places&callback=mapInit"></script>
 		<div id="welcome">
 			<h1>Welcome</h1>
 			<p>Select or create a user below:</p>
@@ -114,7 +179,7 @@
 			</div>
 
 			<div id="Map" class="tabcontent">
-				<h3>Map</h3>
+				<div id="google-render-map"></div>
 			</div>
 
 			<div id="Settings" class="tabcontent">
@@ -142,12 +207,10 @@
 					onclick="openTab('FavPlaces', this, 'rgb(176,63,84)')">
 				Favourite Places
 			</button>
-			<button class="tablink" onclick="openTab('Map', this, 'rgb(77,158,19)')">Map</button>
+			<button class="tablink" onclick="mapUpdate(this)">Map</button>
 			<button class="tablink" onclick="openTab('Settings', this, 'rgb(98,34,135)')">Settings</button>
 			<button class="tablink" onclick="changePageFocus('welcome', null)">Log Out</button>
 		</div>
-		<div id="map"></div>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD87r7QWRb85HhxmVIxzwTx0SO2uY5Y0tM&libraries=places&callback=init" async defer></script>
 		<!-- App code: -->
 		<script src="js/functions.js"></script>
 		<script src="js/home.js"></script>
