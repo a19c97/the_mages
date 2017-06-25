@@ -49,7 +49,7 @@
                 Phone <br /><input type="text" name="phone" placeholder="(647)-915-3689"/><br />
                 Address <br />
                 <textarea rows="1" cols="50" name="address"
-                          placeholder="44 Devonshire Place, Toronto, ON"></textarea><br />
+                          placeholder="341 Yonge Street, Toronto, ON M5B 1S1"></textarea><br />
                 <br />
                 <input type="button" onclick="createUser()" value="Save"/>
                 <input type="button" onclick="changePageFocus('welcome', null)" value="Cancel"/>
@@ -60,7 +60,11 @@
         <div id="tabs" class="tabs">
             <div id="GoHome" class="tabcontent">
                 <h3>Go Home</h3>
-                <img src="images/home.png" alt="Home" onclick="goHome()"/>
+                <img src="images/home.png" alt="Home" onclick="goHome(currentUser.address)"/>
+            </div>
+
+            <div id="Map" class="tabcontent">
+                <h3>Map</h3>
             </div>
 
             <div id="FavPlaces" class="tabcontent">
@@ -87,11 +91,10 @@
             </div>
 
 
-            <button class="tablink"
-                    onclick="openTab('GoHome', this, '22', '96', '186')">Go
-                Home</button>
             <button class="tablink" id="defaultOpen"
-                    onclick="openTab('FavPlaces', this, '176', '63', '84')">Favourite Places</button>
+                    onclick="openTab('GoHome', this, '22', '96', '186')">Go Home</button>
+            <button class="tablink" onclick="openTab('FavPlaces', this, '176', '63', '84')">Favourite Places</button>
+            <button class="tablink" onclick="openTab('Map', this, '176', '63', '84')">Map</button>
             <button class="tablink" onclick="openTab('Settings', this, '98', '34', '135')">Settings</button>
             <button class="tablink" onclick="changePageFocus('welcome', null)">Log Out</button>
         </div>
