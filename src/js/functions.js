@@ -2,7 +2,9 @@
 
 // User functions
 
-function createUser(name) {
+function createUser() {
+    var form = document.getElementById('myForm');
+    var name = form.elements["name"].value;
     users.push({
         name: name,
         music: true,
@@ -15,10 +17,13 @@ function createUser(name) {
     var newIcon = document.createElement('img');
     newIcon.src = "images/user.png";
     newIcon.alt = name;
-    newIcon.classList.add("user");
-    newIcon.onclick = "changePageFocus('welcome')";
+    newIcon.classList.add("user", name);
+    newIcon.onclick = function() {
+        changePageFocus('tabs', name);
+    };
     var parent = document.getElementById('welcome').children[2];
     parent.insertBefore(newIcon, parent.firstChild);
+    changePageFocus('welcome', null);
 }
 
 // Speeding
