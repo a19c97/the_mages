@@ -22,15 +22,25 @@ function createUser() {
         speedLimit: 100
     });
 
+    var newDiv = document.createElement('div');
+
     var newIcon = document.createElement('img');
     newIcon.src = "images/user.png";
     newIcon.alt = name;
-    newIcon.classList.add("user");
     newIcon.onclick = function() {
         changePageFocus('tabs', name);
     };
+    // var newBreak = document.createElement('br');
+    var newTitle = document.createElement('p');
+    newTitle.innerHTML = name;
+
+    newDiv.appendChild(newIcon);
+    // newDiv.appendChild(newBreak);
+    newDiv.appendChild(newTitle);
+    newDiv.classList.add("user");
+
     var parent = document.getElementById('welcome').children[2];
-    parent.insertBefore(newIcon, parent.firstChild);
+    parent.insertBefore(newDiv, parent.firstChild);
     changePageFocus('welcome', null);
     userCreated = true;
 }
