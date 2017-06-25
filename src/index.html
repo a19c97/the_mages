@@ -9,7 +9,6 @@
 
         <!-- Your custom files -->
         <link rel="stylesheet" href="css/app.css" type="text/css">
-        <link rel="stylesheet" href="css/music_player.css" type="text/css">
 
         <script src="GMLIB/system.js"></script>
         <script src="GMLIB/info.js"></script>
@@ -55,10 +54,6 @@
                 <img src="images/home.png" alt="Home" onclick="goHome()"/>
             </div>
 
-            <div id="Music" class="tabcontent">
-                <h3>Music</h3>
-            </div>
-
             <div id="Map" class="tabcontent">
                 <h3>Map</h3>
                 <p>Map is the capital of France.</p>
@@ -69,7 +64,7 @@
                 <form>
                     <fieldset>
                         <legend>Please select features</legend>
-                        <input type="checkbox" name="feature" value="Music" /> Music <br />
+                        <input type="checkbox" name="feature" value="LogOut" /> LogOut <br />
                         <input type="checkbox" name="feature" value="Map" /> Map <br />
                         <input type="checkbox" name="feature" value="Learner" />  Learner <br />
                         <input type="checkbox" name="feature" value="Enhanced Accessibility" />  Enhanced Accessibility <br />
@@ -80,9 +75,9 @@
             </div>
 
             <button class="tablink" onclick="openTab('GoHome', this, 'blue')">Go Home</button>
-            <button class="tablink" onclick="openTab('Music', this, 'red')" id="defaultOpen">Music</button>
             <button class="tablink" onclick="openTab('Map', this, 'green')">Map</button>
             <button class="tablink" onclick="openTab('Settings', this, 'mediumpurple')">Settings</button>
+            <button class="tablink" onclick="openTab('LogOut', this, 'red')" id="defaultOpen">Log Out</button>
 
             <br />
             <button onclick="changePageFocus('welcome', null)">Go to welcome</button>
