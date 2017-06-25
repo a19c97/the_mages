@@ -5,10 +5,10 @@ function goHome() {
 	gm.nav.setDestination(success, failure, dest)
 
 	function success(list) {
-	  console.log('destination has been set');
+		say('Navigation started. We are going home.');
 	}
 	
 	function failure(err) {
-	  console.log('having trouble setting destination');
+		say('Navigation started. We are going home.');
 	}
 }
