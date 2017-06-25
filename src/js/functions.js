@@ -25,7 +25,7 @@ function createUser() {
     var newDiv = document.createElement('div');
 
     var newIcon = document.createElement('img');
-    newIcon.src = "images/user.png";
+    newIcon.src = "images/" + USER_PIC_URLS[users.length % USER_PIC_URLS.length];
     newIcon.alt = name;
     newIcon.onclick = function() {
         changePageFocus('tabs', name);
@@ -40,7 +40,7 @@ function createUser() {
     newDiv.classList.add("user");
 
     var parent = document.getElementById('welcome').children[2];
-    parent.insertBefore(newDiv, parent.firstChild);
+    parent.appendChild(newDiv);
     changePageFocus('welcome', null);
     userCreated = true;
 }
@@ -181,4 +181,49 @@ function checkLocation(){
         }
     }
 
+}
+
+// Learner stuff
+/* Blinker */
+function blinkerReminder() {
+
+}
+
+/* Seat belt */
+function seatBeltWarning() {
+    gm.info.getVehicleData(getPassengerSuccessful,
+        ['passenger_present', 'passenger_seatbelt_fastened']);
+
+    function getPassengerSuccessful(data) {
+        console.log("passenger_present: " + data.passenger_present);
+        console.log("seatbelt on: " + data.passenger_seatbelt_fastened);
+
+        if (data.passenger_present == 1 && data.passenger_seatbelt_fastened == 0){
+            say("Shotgun, put on your seatbelt!");
+        }
+        if (data.passenger_present == 0 && data.passenger_seatbelt_fastened == 1){
+            say("Kid you have a ghost riding shotgun");
+        }
+    }
+}
+
+var prev_gear = "F";
+
+/* Doors */
+function doorWarning() {
+    gm.info.getVehicleData(getGearSuccessful, ['gear_automatic']);
+    var currGear;
+
+    function getGearSuccessful(data) {
+        console.log('Gear is: ', data.gear_automatic);
+        currGear = data.gear_automatic;
+    }
+
+
+    // if in neutral or park and changed to forward or reverse, give warning
+    var neutralOrPark = (prev_gear == "D" || prev_gear == "N");
+    var toForwardOrReverse = (currGear == "E" || currGear == "C");
+    if (neutralOrPark && toForwardOrReverse){
+
+    }
 }

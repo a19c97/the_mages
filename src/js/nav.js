@@ -39,6 +39,9 @@ function changePageFocus(page, name) {
     if (currentUser.learner){
         console.log("Learner mode on");
         // do learner stuff
+        doorWarning();
+        blinkerReminder();
+        seatBeltWarning();
     }
 }
 
