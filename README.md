@@ -8,7 +8,11 @@ The accelerating progress in autonomous vehicle development forces us to reconsi
 
 ## Features
 
-Vehicle users create individual accounts to view and store their preferences.  Features include a home button, the ability to search for places of interest, a map, and various personalizable settings.  We additionally introduce the following technological advances:
+Vehicle users create individual accounts to view and store their preferences.  
+
+<p align="center"> <img src="https://github.com/christinekc/the_mages/blob/master/src/images/LogIn.png"> </p>
+
+Features include a home button, the ability to search for places of interest, a map, and various personalizable settings.  We additionally introduce the following technological advances:
 
 ### Safety
 - **Enhanced Accessibility** offers a large home button icon to autonomously drive passengers, such as the elderly, home.
@@ -22,11 +26,6 @@ Vehicle users create individual accounts to view and store their preferences.  F
 - **Favorite Places** searches for food, ATMs, car repair shops, and gas stations near your location and remembers places you have previously visited.
 
 <p align="center"> <img src="https://github.com/christinekc/the_mages/blob/master/src/images/FavPlaces.png" width = 50%> </p>
-
-## How It Works
-backend? (finish)
-
-The UI is utilizes HTML and CSS (finish)
 
 ## Authors
 - Asic Chen
