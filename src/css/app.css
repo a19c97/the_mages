@@ -1,9 +1,11 @@
 #welcome {
     text-align: center;
+    background-color:rgb(197,215,237);
 }
 
 #create {
     text-align: center;
+    background-color:rgb(197,215,237);
 }
 
 @media (min-width: 801px) {
@@ -84,5 +86,17 @@ fieldset {
 }
 
 .user {
+    background-color:rgb(197,215,237);
+}
+
+.welcomeHeader {
+    background-color:rgb(197,215,237);
+}
+
+.welcomeInstructions {
+    background-color:rgb(197,215,237);
+}
+
+.addUser {
     background-color:rgb(197,215,237);
 }
