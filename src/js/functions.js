@@ -4,11 +4,17 @@
 
 function createUser() {
     var form = document.getElementById('myForm');
-    var name = form.elements["name"].value;
+    var name = form.elements['name'].value;
+    var address = form.elements['address'].value;
+    var phone = form.elements['phone'].value;
+    if (!address || !phone) {
+        return;
+    }
     users.push({
         name: name,
-        home: "",
-        accessiblity: true,
+        address: address,
+        phone: phone,
+        accessibility: true,
         learner: true,
         locationMonitoring: true,
         preferences: {},
