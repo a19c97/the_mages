@@ -43,9 +43,9 @@
             <form id="myForm">
                 Name <br />
                 <input type="text" name="name" placeholder="John Doe" /><br />
-                Address <br />
-                <input type="text" name="address" placeholder="44 Devonshire Place, Toronto, ON" /><br />
                 Phone <br /><input type="text" name="phone" placeholder="(647)-915-3689" /><br />
+                Address <br />
+                <textarea rows="4" cols="50" name="address" placeholder="44 Devonshire Place, Toronto, ON"></textarea>
                 <br />
                 <input type="button" onclick="createUser()" value="Save"/>
                 <input type="button" onclick="changePageFocus('welcome', null)" value="Cancel"/>
@@ -86,16 +86,7 @@
             <button class="tablink" onclick="openTab('GoHome', this, '22', '96', '186')">Go Home</button>
             <button class="tablink" onclick="openTab('Map', this, '176', '63', '84')">Map</button>
             <button class="tablink" onclick="openTab('Settings', this, '98', '34', '135')">Settings</button>
-            <button class="tablink" onclick="openTab('LogOut', this, '176', '63', '84')" id="defaultOpen">Log Out</button>;
-
-            <br />
-            <button onclick="changePageFocus('welcome', null)">Go to welcome</button>
-
-            <button class="tablink" onclick="openTab('GoHome', this, 'blue')">Go Home</button>
-            <button class="tablink" onclick="openTab('Map', this, 'green')">Map</button>
-            <button class="tablink" onclick="openTab('Settings', this, 'mediumpurple')">Settings</button>
-            <button class="tablink" onclick="changePageFocus('welcome')" id="defaultOpen">Log
-                Out</button>
+            <button class="tablink" onclick="changePageFocus('welcome', null)" id="defaultOpen">Log Out</button>
         </div>
 
         <!-- App code: -->
