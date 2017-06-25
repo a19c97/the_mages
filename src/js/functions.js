@@ -300,3 +300,17 @@ function doorWarning() {
     //
     // }
 }
+
+
+// Accessibility
+function bigFont() {
+    console.log("Calling bigFont");
+
+    var settings = document.getElementById("Settings");
+    settings.classList.add("big-font");
+}
+
+function smallFont() {
+    var settings = document.getElementById("Settings");
+    settings.classList.remove("big-font");
+}
