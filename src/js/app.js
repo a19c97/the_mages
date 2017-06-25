@@ -7,11 +7,12 @@ var currentUser = {};
 var users = [];
 // location
 var prevTime = 0;
+// Learner mode
+var learnerMode = false;
 
 initializeUI();
-
-//checkSpeed();
 checkLocation();
+checkSpeed();
 
 function checkSpeed(){
     console.log("Running checkSpeed");

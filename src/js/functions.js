@@ -4,14 +4,22 @@
 
 function createUser() {
     var form = document.getElementById('myForm');
-    var name = form.elements["name"].value;
+    var name = form.elements['name'].value;
+    var address = form.elements['address'].value;
+    var phone = form.elements['phone'].value;
+    if (!address || !phone) {
+        return;
+    }
     users.push({
         name: name,
-        music: true,
-        map: true,
-        learner: true,
+        address: address,
+        phone: phone,
         accessibility: true,
-        volume: 0.5
+        learner: true,
+        locationMonitoring: true,
+        preferences: {},
+        speedWarning: true,
+        speedLimit: 100
     });
 
     var newIcon = document.createElement('img');
@@ -109,6 +117,17 @@ function sendLocation(lon, lat) {
     xhttp.open("POST", "https://32891a36.ngrok.io", true);
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhttp.send("lon=" + lon + "&" + "lat=" + lat);
+}
+
+// My Maps
+
+/* Find locations around me */
+function findLocations(radius) {
+
+}
+
+function modifyWeight() {
+
 }
 
 function myMap() {
