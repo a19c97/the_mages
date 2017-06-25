@@ -127,7 +127,7 @@ function speedingWarning(speed) {
 
     switch (strike) {
         case 1:
-            say("You are going too fast! I'm scared!!!");
+            say("You are going too fast!");
             break;
         case 2:
             say("Slow down or I'll text mom.");
@@ -167,7 +167,7 @@ function say(text) {
 /* Send speeding data to mom */
 function sendSpeedingText(speed) {
     console.log("Sending speeding text");
-    var username = "Andrey";
+    var username = users[currentUserIndex].name;
 
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "https://32891a36.ngrok.io", true);
@@ -182,7 +182,7 @@ function sendLocation(lon, lat) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "https://32891a36.ngrok.io", true);
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhttp.send("lon=" + lon + "&" + "lat=" + lat);
+    xhttp.send("lon=" + lon + "&" + "lat=" + lat + "user=" + users[currentUserIndex].name);
 }
 
 // My Maps
