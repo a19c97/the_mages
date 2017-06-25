@@ -112,3 +112,11 @@ function sendLocation(lon, lat) {
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhttp.send("lon=" + lon + "&" + "lat=" + lat);
 }
+
+function myMap() {
+    var mapOptions = {
+        center: new google.maps.LatLng(51.5, -0.12),
+        zoom: 10
+    }
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
